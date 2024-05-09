@@ -1,0 +1,203 @@
+
+<div class="stp step-2">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Información General del Director
+    </h6>
+    <div class="flex flex-wrap">
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="nombre-director">
+                    Nombre del director
+                </label>
+                <input type="text" name="nombre" class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm" placeholder="Escribe tu nombre" id="nombre-director" value="{{ nombre }}">
+
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="apellido-director">
+                    Apellido del director
+                </label>
+                <input type="text" name="apellido" class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm" placeholder="Escribe tu apellido" id="apellido-director" value="{{ apellido }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="cedula-director">
+                    Cédula del director
+                </label>
+                <input type="text" name="cedula"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Coloca tu cédula" min="0" id="cedula-director" value="{{ cedula_usuario }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="tel-ofi-director">
+                    Teléfono oficina del director
+                </label>
+                <input type="tel" name="telefono_oficina"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escribe tu teléfono de oficina" id="tel-ofi-director">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="tel-per-director">
+                    Teléfono personal del director
+                </label>
+                <input type="tel" name="telefono_personal"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escribe tu teléfono personal" id="tel-per-director">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="correo-inst-director">
+                    Correo institucional del director
+                </label>
+                <input type="email" name="correo_institucional"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="example@example.com" id="correo-inst-director" value="{{ correo_usuario }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="correo-per-director">
+                    Correo personal del director
+                </label>
+                <input type="email" name="correo_personal1"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="example@example.com" id="correo-per-director">
+            </div>
+        </div>
+    </div>
+
+</br>
+
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Asignación de Roles
+    </h6>
+
+    <div class="flex flex-wrap">
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="rol-coordinador-ingles">
+                    Docente (Coordinador de Ingles)
+                </label>
+                <input type="text" name="nombre" class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm" placeholder="Escriba el nombre del coordinador de inglés" id="">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="rol-coordinador-ingles">
+                    Coordinador  de Informática
+                </label>
+                <input type="text" name="nombre" class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm" placeholder="Escriba el nombre del coordinador de informática" id="">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-2 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            
+            <div id="nxtButton-2"
+            class="next-stp-2 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+<script>
+    function validateInput(input) {
+        if (!input.value.trim()) {
+            input.setCustomValidity('Este campo es obligatorio.');
+            input.reportValidity();
+            return false;
+        } else {
+            input.setCustomValidity('');
+            return true;
+        }
+    }
+
+    function validateCheckboxGroup(checkboxGroupName) {
+        const checkboxes = document.querySelectorAll(`input[name="${checkboxGroupName}"]:checked`);
+        if (checkboxes.length === 0) {
+            const firstCheckbox = document.querySelector(`input[name="${checkboxGroupName}"]`);
+            firstCheckbox.setCustomValidity('Seleccione al menos una opción.');
+            firstCheckbox.reportValidity();
+            return false;
+        } else {
+            document.querySelector(`input[name="${checkboxGroupName}"]`).setCustomValidity('');
+            return true;
+        }
+    }
+
+    function validateRadioGroup(radioGroupName) {
+        const radio = document.querySelector(`input[name="${radioGroupName}"]:checked`);
+        if (!radio) {
+            const firstRadio = document.querySelector(`input[name="${radioGroupName}"]`);
+            firstRadio.setCustomValidity('Seleccione una opción.');
+            firstRadio.reportValidity();
+            return false;
+        } else {
+            document.querySelector(`input[name="${radioGroupName}"]`).setCustomValidity('');
+            return true;
+        }
+    }
+
+    // Validacion preguntas
+
+    document.getElementById('nxtButton-2').addEventListener('click', function (e) {
+        e.preventDefault();
+        const correoPersDirector = validateInput(document.getElementById('correo-per-director'));
+        const correoInstDirector = validateInput(document.getElementById('correo-inst-director'));
+        const telefonoPersonalDirector = validateInput(document.getElementById('tel-per-director'));
+        const telefonoOficinaDirector = validateInput(document.getElementById('tel-ofi-director'));
+        const cedulaDirector = validateInput(document.getElementById('cedula-director'));
+        const apellidoDirector = validateInput(document.getElementById('apellido-director'));
+        const nombreDirector = validateInput(document.getElementById('nombre-director'));
+        
+        if (correoPersDirector && correoInstDirector && telefonoPersonalDirector && telefonoOficinaDirector && cedulaDirector && apellidoDirector && nombreDirector) {
+            document.querySelector('.step-3').style.display = "flex";
+            document.querySelector('.step-2').style.display = "none";
+            circleSteps[2].classList.add("active");
+
+        }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                this.setCustomValidity('');
+            });
+        });
+    });
+
+    // boton atras
+    const prevButton2 = document.querySelector('.prev-stp-2');
+    prevButton2.addEventListener('click', function(event){
+            document.querySelector('.step-2').style.display = "none";
+            document.querySelector('.step-1').style.display = "flex";
+    })
+
+    
+</script>

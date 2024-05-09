@@ -1,0 +1,175 @@
+{% extends "base/vertical_base.html" %}
+
+{% block page_content %}
+<style>
+    th, td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      white-space: nowrap;
+      text-align: center;
+      border-left: 1px solid #dee2e6;
+      border-right: 1px solid #dee2e6;
+    }
+</style>
+<div class="col mt-2">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col">                      
+            <h4 class="card-title">Base de datos - Formulario Docente</h4>                      
+          </div><!--end col-->                                        
+        </div><!--end row-->                                  
+      </div><!--end card-header-->
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th class="border-top-0">Nombre</th>
+                <th class="border-top-0">Apellido</th>
+                <th class="border-top-0">Cédula</th>
+                <th class="border-top-0">Teléfono Oficina</th>
+                <th class="border-top-0">Teléfono Personal</th>
+                <th class="border-top-0">Correo Institucional</th>
+                <th class="border-top-0">Porcentaje planes completados</th>
+                <th class="border-top-0">Dicta mas de un nivel</th>
+                <th class="border-top-0">Niveles dictados</th>
+                <th class="border-top-0">Horas ingles dictado a la semana</th>
+
+                <th class="border-top-0">Rango de estudiantes por aula</th>
+                <th class="border-top-0">Frecuencia uso de ingles en clases</th>
+                <th class="border-top-0">Porcentaje tiempo ingles usado en clases</th>
+                <th class="border-top-0">Incentiva a hablar ingles en horas de clase</th>
+                <th class="border-top-0">Porcentaje Promueve Inglés en clases</th>
+                <th class="border-top-0">Tiempo Diálogo Inglés con cada estudiante</th>
+                <th class="border-top-0">Tiempo Promedio uso de Inglés en clases</th>
+
+                <th class="border-top-0">Cuentas con señaletica ingles en C. E.</th>
+                <th class="border-top-0">Cantidad Señalizaciones C. E.</th>
+                <th class="border-top-0">Donde estan desplegadas</th>
+                <th class="border-top-0">Foto o video</th>
+                <th class="border-top-0">Cuentas con señaletica ingles en el Aula.</th>
+                <th class="border-top-0">Cantidad señalizaciones dentro Aula</th>
+
+                <th class="border-top-0">Interaccion docente - directivos/administrativos</th>
+                <th class="border-top-0">Interaccion docente ingles - docente ingles</th>
+                <th class="border-top-0">Interaccion docente - padres</th>
+                <th class="border-top-0">Interactua con estudiantes en ingles dentro del C.E.</th>
+                <th class="border-top-0">Actividades - Música</th>
+                <th class="border-top-0">Actividades - Teatro</th>
+                <th class="border-top-0">Actividades - Coreografía</th>
+                <th class="border-top-0">Frecuencia - Trimestre</th>
+                <th class="border-top-0">Frecuencia - Mes</th>
+                <th class="border-top-0">Frecuencia - Semana</th>
+
+                <th class="border-top-0">Años de experiencia</th>
+                <th class="border-top-0">Sector de experiencia</th>
+                <th class="border-top-0">Niveles que impartió clases</th>
+                <th class="border-top-0">Nivel en que imparte clases actualmente</th>
+                <th class="border-top-0">Tiene título de enseñanza Ingles</th>
+                <th class="border-top-0">Nivel del título</th>
+                <th class="border-top-0">Tiene titulo formal licenciatura</th>
+                <th class="border-top-0">Año de obtencion</th>
+                <th class="border-top-0">Tiene titulo formal postgrago</th>
+                <th class="border-top-0">Año de obtencion</th>
+                <th class="border-top-0">Tiene titulo formal maestría</th>
+                <th class="border-top-0">Año de obtencion</th>
+                <th class="border-top-0">Tiene titulo formal doctorado</th>
+                <th class="border-top-0">Año de obtencion</th>
+                
+
+
+                <th class="border-top-0">Cursos Nacionales Inglés</th>
+                <th class="border-top-0">Cursos Internacionales Inglés</th>
+                <th class="border-top-0">Certificación Inglés</th>
+                <th class="border-top-0">Nombre Titulación</th>
+                <th class="border-top-0">Año Certificación</th>
+                <th class="border-top-0">Vencimiento Certificación</th>
+                <th class="border-top-0">Nivel Inglés Docente</th>
+                <th class="border-top-0">Dispuesto Renovar Certificación</th>
+                <th class="border-top-0">Frecuencia Uso Recursos Inglés</th>
+                <th class="border-top-0">Acceso Recursos Inglés</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for d in docente %}
+              <tr>
+                <td>{{ d.nombre }}</td>
+                <td>{{ d.apellido }}</td>
+                <td>{{ d.cedula }}</td>
+                <td>{{ d.telefono_oficina }}</td>
+                <td>{{ d.telefono_personal }}</td>
+                <td>{{ d.correo_institucional }}</td>
+                <td>{{ d.porcentaje_planes_completados }}</td>
+                <td>{{ d.dicta_mas_de_un_nivel }}</td>
+                <td>{{ d.niveles_dictados }}</td>
+                <td>{{ d.horas_clase_ingles }}</td>
+                
+
+                <td>{{ d.rango_estudiantes }}</td>
+                <td>{{ d.frecuencia_habla_ingles }}</td>
+                <td>{{ d.porcentaje_tiempo_ingles }}</td>
+                <td>{{ d.incentiva_hablar_ingles }}</td>
+                <td>{{ d.porcentaje_promueve_ingles }} </td>
+                <td>{{ d.tiempo_dialogo_ingles }}</td>
+                <td>{{ d.tiempo_promedio_ingles }}</td>
+
+                <td>{{ d.senalizaciones_centro_ingles }}</td>
+                <td>{{ d.cantidad_senalizaciones_centro }}</td>
+                <td>{{ d.tipo_senaletica }}</td>
+                <td>{{ d.evidence }}</td>
+                <td>{{ d.senaletica_aula }}</td>
+                <td>{{ d.cantidad_senalizaciones_aula }}</td>
+
+                <td>{{ d.frecuencia_interaccion_directivos }}</td>
+                <td>{{ d.frecuencia_interaccion_docente }}</td>
+                <td>{{ d.frecuencia_interaccion_padres }}</td>
+                <td>{{ d.interactua_estudiantes }}</td> 
+                <td>{{ d.musica }}</td> 
+                <td>{{ d.teatro }}</td> 
+                <td>{{ d.coreografia }}</td> 
+                <td>{{ d.trimestre }}</td> 
+                <td>{{ d.mes }}</td> 
+                <td>{{ d.semana }}</td> 
+
+                <td>{{ d.anos_experiencia }}</td> 
+                <td>{{ d.sector_experiencia }}</td> 
+                <td>{{ d.niveles_impartidos }}</td> 
+                <td>{{ d.nivel_actual }}</td> 
+                <td>{{ d.titulo_ensenanza }}</td> 
+                <td>{{ d.nivel_titulo }}</td> 
+                <td>{{ d.licenciatura }}</td> 
+                <td>{{ d.licenciatura_ano }}</td> 
+                <td>{{ d.postgrado }}</td> 
+                <td>{{ d.postgrado_ano }}</td> 
+                <td>{{ d.maestria }}</td> 
+                <td>{{ d.maestria_ano }}</td> 
+                <td>{{ d.doctorado }}</td> 
+                <td>{{ d.doctorado_ano }}</td> 
+
+
+
+                <td>{{ d.cursos_nacionales_ingles }}</td>
+                <td>{{ d.cursos_internacionales_ingles }}</td>
+                <td>{{ d.certificacion_ingles }}</td>
+                <td>{{ d.nombre_titulacion }}</td>
+                <td>{{ d.ano_certificacion }}</td>
+                <td>{{ d.vencimiento_certificacion }}</td>
+                <td>{{ d.nivel_ingles_docente }}</td>
+                <td>{{ d.dispuesto_renovar_certificacion }}</td>
+                <td>{{ d.frecuencia_uso_recursos_ingles }}</td>
+                <td>{{ d.acceso_recursos_ingles }}</td>
+
+
+
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div><!--end table-responsive--> 
+      </div><!--end card-body--> 
+    </div><!--end card--> 
+</div><!--end col-->
+<a href="{% url 'export_docente' %}" class="btn btn-primary">Exportar a Excel</a>
+{% endblock %}

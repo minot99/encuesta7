@@ -1,0 +1,963 @@
+<div class="stp step-6">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Detalles de la Experiencia Docente y Certificaciones en Inglés
+    </h6>
+    <div class="flex flex-wrap">
+        <!-- Años de experiencia en impartir clases -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="anos-experiencia">
+                    Años de experiencia en impartir clases
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="anos-experiencia" value="0" class="text-[#483eff] border-gray-300"
+                            onclick="toggleActividades4('no')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">0 (esta en su primer año)</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="anos-experiencia" value="1-3" class="text-[#483eff] border-gray-300"
+                            onclick="toggleActividades4('si')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">1-3</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="anos-experiencia" value="4-6" class="text-[#483eff] border-gray-300"
+                            onclick="toggleActividades4('si')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">4-6</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="anos-experiencia" value="7_mas" class="text-[#483eff] border-gray-300"
+                            onclick="toggleActividades4('si')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">7 o más</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3" id="anios-experiencia-clases" style="display: none">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="sector-experiencia">
+                    Sector en el que ha tenido experiencia
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="sector-experiencia" value="Oficial"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Oficial</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="sector-experiencia" value="Particular"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Particular</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="sector-experiencia" value="Ambos"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Ambos</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3" id="anios-experiencia-clases" style="display: none">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="niveles-impartidos">¿En qué niveles ha
+                    impartido clases?</label>
+                <div class="mt-2 px-4">
+                    <div>
+                        <input type="checkbox" id="inicial" name="niveles-impartidos" value="Inicial"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="inicial" class="ml-2 text-sm font-medium text-[#233559]">Inicial</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="primaria" name="niveles-impartidos" value="Primaria"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="primaria" class="ml-2 text-sm font-medium text-[#233559]">Primaria</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="premedia" name="niveles-impartidos" value="Premedia"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="premedia" class="ml-2 text-sm font-medium text-[#233559]">Premedia</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="media" name="niveles-impartidos" value="Media"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="media" class="ml-2 text-sm font-medium text-[#233559]">Media</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleActividades4(value) {
+                var display = value === 'si' ? 'block' : 'none';
+                document.getElementById('anios-experiencia-clases').style.display = display;
+            }
+        </script>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="nivel-actual">Nivel en el que imparte
+                    clases actualmente</label>
+                <div class="mt-2 px-4">
+                    <div>
+                        <input type="checkbox" id="inicial-act" name="nivel-actual" value="Inicial"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="inicial-act" class="ml-2 text-sm font-medium text-[#233559]">Inicial</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="primaria-act" name="nivel-actual" value="Primaria"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="primaria-act" class="ml-2 text-sm font-medium text-[#233559]">Primaria</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="premedia-act" name="nivel-actual" value="Premedia"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="premedia-act" class="ml-2 text-sm font-medium text-[#233559]">Premedia</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="media-act" name="nivel-actual" value="Media"
+                            class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                        <label for="media-act" class="ml-2 text-sm font-medium text-[#233559]">Media</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="titulo-ensenanza">
+                    ¿Cuenta con un título relacionado a la enseñanza del idioma inglés? fue obtenido a nivel
+                    nacional o internacional
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="titulo-ensenanza" value="si"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="titulo-ensenanza" value="no"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="relative w-full mb-3" id="nivel-titulo">
+                <label class="block text-sm font-bold text-[#233559] opacity-60" for="nivel-titulo-select">
+                    Nivel del título:
+                </label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-titulo-select" value="nacional"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Nacional</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-titulo-select" value="internacional"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Internacional</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="titulos-formales">
+                    Mencione sus títulos formales relacionados a la enseñanza del idioma inglés y el año de su
+                    obtención
+                </label>
+                <div class="mt-2 px-4">
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="licenciatura" name="titulos-formales" value="Licenciatura"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="licenciatura" class="text-sm font-medium text-[#233559]">Licenciatura</label>
+                        </div>
+                        <input type="number" name="licenciatura-ano" placeholder="Año"
+                            class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                            min="1900" max="2099" style="width: 100px;">
+                    </div>
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="postgrado" name="titulos-formales" value="Postgrado"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="postgrado" class="ml-2 text-sm font-medium text-[#233559]">Postgrado</label>
+                        </div>
+                        <input type="number" name="postgrado-ano" placeholder="Año"
+                            class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                            min="1900" max="2099" style="width: 100px;">
+                    </div>
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="maestria" name="titulos-formales" value="Maestría"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="maestria" class="ml-2 text-sm font-medium text-[#233559]">Maestría</label>
+                        </div>
+                        <input type="number" name="maestria-ano" placeholder="Año"
+                            class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                            min="1900" max="2099" style="width: 100px;">
+                    </div>
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="doctorado" name="titulos-formales" value="Doctorado"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="doctorado" class="ml-2 text-sm font-medium text-[#233559]">Doctorado</label>
+                        </div>
+                        <input type="number" name="doctorado-ano" placeholder="Año"
+                            class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                            min="1900" max="2099" style="width: 100px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Selecciona el checkbox y el campo de entrada
+                var checkboxLicenciatura = document.getElementById('licenciatura');
+                var inputAnoLicenciatura = document.getElementsByName('licenciatura-ano')[0];
+
+                // Inicialmente deshabilita el campo de año si el checkbox no está marcado
+                inputAnoLicenciatura.disabled = !checkboxLicenciatura.checked;
+
+                // Añade un evento listener al checkbox para habilitar/deshabilitar el campo de año
+                checkboxLicenciatura.addEventListener('change', function () {
+                    inputAnoLicenciatura.disabled = !this.checked;
+                    if (!this.checked) {
+                        // Opcional: Limpia el valor del campo cuando se deshabilita
+                        inputAnoLicenciatura.value = '';
+                    }
+                });
+            });
+        </script>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="tipo-curso">
+                    Mencione sus cursos de educación continua obtenidos a nivel internacional relacionados a la
+                    enseñanza del idioma inglés, el año en que las obtuvo y la cantidad de horas de la capacitación
+                </label>
+                <div class="mt-2 px-4">
+                    <!-- Curso -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="curso" name="tipo-curso" value="Curso"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="curso" class="text-sm font-bold text-[#233559]">Curso</label>
+                        </div>
+                        <div>
+                            <input type="number" name="curso-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="curso-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                    <!-- Taller -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="taller" name="tipo-curso" value="Taller"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="taller" class="text-sm font-bold text-[#233559]">Taller</label>
+                        </div>
+                        <div>
+                            <input type="number" name="taller-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="taller-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                    <!-- Seminario -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="seminario" name="tipo-curso" value="Seminario"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="seminario" class="text-sm font-bold text-[#233559]">Seminario</label>
+                        </div>
+                        <div>
+                            <input type="number" name="seminario-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="seminario-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                    <!-- Diplomado -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="diplomado" name="tipo-curso" value="Diplomado"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="diplomado" class="text-sm font-bold text-[#233559]">Diplomado</label>
+                        </div>
+                        <div>
+                            <input type="number" name="diplomado-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="diplomado-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                    <!-- Entrenamiento -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="entrenamiento" name="tipo-curso" value="Entrenamiento"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="entrenamiento" class="text-sm font-bold text-[#233559]">Entrenamiento</label>
+                        </div>
+                        <div>
+                            <input type="number" name="entrenamiento-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="entrenamiento-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                    <!-- Otros -->
+                    <div class="mt-2 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="otros" name="tipo-curso" value="Otros"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500 mr-1">
+                            <label for="otros" class="text-sm font-bold text-[#233559]">Otros</label>
+                        </div>
+                        <div>
+                            <input type="number" name="otros-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="number" name="otros-horas" placeholder="Horas"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                min="0" style="width: 80px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="certificacion-ingles">
+                    ¿Cuenta con una certificación de su nivel de inglés?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="certificacion-ingles" value="si"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="certificacion-ingles" value="no"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3 nombre-titulacion-checkbox">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="tipo-curso">
+                    Selecciona el nombre de la titulación / certificación, de que año es y cuando vence
+                </label>
+                <div class="mt-2 px-4">
+                    <!-- Cambridge -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="cambridge" name="nombre-titulacion"
+                                value="Cambridge English Qualifications"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="cambridge" class="text-sm font-medium text-[#233559]">Cambridge English
+                                Qualifications</label>
+                        </div>
+
+                        <div class="flex">
+                            <input type="number" name="cambridge-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="cambridge-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoCambridge">
+                        </div>
+                    </div>
+                    <!-- Linguaskill -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="linguaskill" name="nombre-titulacion" value="Linguaskill"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="linguaskill" class="text-sm font-medium text-[#233559]">Linguaskill</label>
+                        </div>
+                        <div class="flex">
+                            <input type="number" name="linguaskill-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="linguaskill-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoLinguaskill">
+                        </div>
+                    </div>
+                    <!-- IELTS -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="ielts" name="nombre-titulacion" value="IELTS"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="ielts" class="text-sm font-medium text-[#233559]">IELTS</label>
+                        </div>
+                        <div class="flex pt-2 mt-2">
+                            <input type="number" name="ielts-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="ielts-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoIELTS">
+                        </div>
+                    </div>
+                    <!-- TOEFL -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="toefl" name="nombre-titulacion" value="TOEFL"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="toefl" class="text-sm font-medium text-[#233559]">TOEFL</label>
+                        </div>
+                        <div class="flex mt-2">
+                            <input type="number" name="toefl-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="toefl-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoTOEFL">
+                        </div>
+                    </div>
+                    <!-- TOEIC -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="toeic" name="nombre-titulacion" value="TOEIC"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="toeic" class="text-sm font-medium text-[#233559]">TOEIC</label>
+                        </div>
+                        <div class="flex mt-2">
+                            <input type="number" name="toeic-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="toeic-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoTOEIC">
+                        </div>
+                    </div>
+                    <!-- Oxford Test of English -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="oxford" name="nombre-titulacion" value="Oxford Test of English"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="oxford" class="text-sm font-medium text-[#233559]">Oxford Test of
+                                English</label>
+                        </div>
+                        <div class="flex mt-2">
+                            <input type="number" name="oxford-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="oxford-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoOxford">
+                        </div>
+                    </div>
+                    <!-- Otra -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="otra" name="nombre-titulacion" value="Otra"
+                                class="w-4 h-4 text-[#483eff] border-gray-300 focus:ring-[#483eff] mr-1">
+                            <label for="otra" class="text-sm font-medium text-[#233559]">Otra</label>
+                        </div>
+                        <div class="flex mt-2">
+                            <input type="number" name="otra-ano" placeholder="Año"
+                                class="py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm mr-2"
+                                min="1900" max="2099" style="width: 80px;">
+                            <input type="text" name="otra-fecha" placeholder="MM/AAAA"
+                                class="fecha-vencimiento py-1 px-2 border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-sm text-sm"
+                                style="width: 90px;" id="fechaVencimientoOtra">
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <label for="evidence-certificado" class="block text-sm font-medium text-[#233559]">Subir
+                            foto del Certificado</label>
+                        <input id="evidence-certificado" type="file" name="evidence-certificado"
+                            class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-[#483eff] focus:ring-[#483eff]">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3 nivel-inglex-checkbox">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="nivel-ingles-docente">
+                    Nivel de Ingles del Docente
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="A0"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A0: Principiante</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="A1-A2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A1 - A2: Básico</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="A2-B1"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A2 - B1: Pre-intermedio</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="B1"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">B1: Intermedio</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="B2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">B2: Intermedio-Alto</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente" value="C1-C2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">C1 - C2: Avanzado</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3 no-certificado-checkbox">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="nivel-ingles-docente-no-certificado">
+                    Conoce usted su nivel de inglés? Seleccione el
+                    nivel de dominio del idioma inglés en el que considera que se encuentra.
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="A0"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A0: Principiante</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="A1-A2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A1 - A2: Básico</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="A2-B1"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">A2 - B1: Pre-intermedio</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="B1"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">B1: Intermedio</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="B2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">B2: Intermedio-Alto</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="nivel-ingles-docente-no-certificado" value="C1-C2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">C1 - C2: Avanzado</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3 renovar-checkbox">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="renovar-certificacion">
+                    ¿Estarías dispuesto a tomar o renovar su certificación en el idioma inglés?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="renovar-certificacion" value="si"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="renovar-certificacion" value="no"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-6 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit">Atrás</div>
+
+        <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+            type="submit">
+            <span class="block">Guardar y continuar luego</span>
+        </div>
+
+        <div id="nxtButton-6"
+            class="next-stp-6 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+
+<script>
+    //step atras
+    const prevButton6 = document.querySelector('.prev-stp-6');
+    prevButton6.addEventListener('click', function (event) {
+        document.querySelector('.step-6').style.display = "none";
+        document.querySelector('.step-5').style.display = "flex";
+    })
+
+    // function validations for
+    // Mencione sus títulos formales relacionados a la enseñanza del idioma inglés
+    function validateFormalTitles() {
+        const checkboxes = document.querySelectorAll('input[name="titulos-formales"]:checked');
+        let isValid = true;
+
+        checkboxes.forEach(checkbox => {
+            const yearInputName = checkbox.value.toLowerCase() + '-ano';
+            const yearInput = document.querySelector(`input[name="${yearInputName}"]`);
+            const yearValue = parseInt(yearInput.value.trim(), 10);
+
+            if (!yearInput || yearInput.value.trim() === '' || yearValue < 1900 || yearValue > 2099) {
+                isValid = false;
+                checkbox.setCustomValidity('Debe ingresar un año válido para el título seleccionado.');
+                checkbox.reportValidity();
+            } else {
+                checkbox.setCustomValidity('');
+            }
+        });
+
+        if (checkboxes.length === 0) {
+            const firstCheckbox = document.querySelector('input[name="titulos-formales"]');
+            firstCheckbox.setCustomValidity('Seleccione al menos un título formal.');
+            firstCheckbox.reportValidity();
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    //Functoon cursos educacion coninua
+    function validateContinuingEducationCourses() {
+    const courseTypes = ['curso', 'taller', 'seminario', 'diplomado', 'entrenamiento', 'otros'];
+    let isValid = true;
+    let isAnyChecked = false; 
+
+    courseTypes.forEach(type => {
+        const checkbox = document.getElementById(type);
+        const hoursInput = document.querySelector(`input[name="${type}-horas"]`);
+        const yearInput = document.querySelector(`input[name="${type}-ano"]`);
+
+        if (checkbox.checked) {
+            isAnyChecked = true; 
+            const yearValue = parseInt(yearInput.value.trim(), 10); 
+
+            if (!yearInput.value.trim() || yearValue < 1900 || yearValue > 2099) {
+                yearInput.setCustomValidity('Ingrese un año válido.');
+                yearInput.reportValidity();
+                isValid = false;
+            } else {
+                yearInput.setCustomValidity('');
+            }
+
+            if (!hoursInput.value.trim() || hoursInput.value < 0) {
+                hoursInput.setCustomValidity('Ingrese una cantidad válida de horas.');
+                hoursInput.reportValidity();
+                isValid = false;
+            } else {
+                hoursInput.setCustomValidity('');
+            }
+        }
+    });
+
+    if (!isAnyChecked) {
+        const firstCheckbox = document.getElementById(courseTypes[0]);
+        firstCheckbox.setCustomValidity('Escoja al menos una opción.');
+        firstCheckbox.reportValidity();
+        isValid = false;
+    } else {
+        const firstCheckbox = document.getElementById(courseTypes[0]);
+        firstCheckbox.setCustomValidity('');
+    }
+
+    return isValid;
+}
+
+    function validateCertifications() {
+    const certificationTypes = ['cambridge', 'linguaskill', 'ielts', 'toefl', 'toeic', 'oxford', 'otra'];
+    let isValid = true;
+    let isAnyChecked = false;
+
+    certificationTypes.forEach(type => {
+        const checkbox = document.getElementById(type);
+        const yearInput = document.querySelector(`input[name="${type}-ano"]`);
+        const dateInput = document.querySelector(`input[name="${type}-fecha"]`);
+
+        if (checkbox.checked) {
+            isAnyChecked = true;
+
+            if (!yearInput.value.trim() || yearInput.value < 1900 || yearInput.value > 2099) {
+                yearInput.setCustomValidity('Ingrese un año válido.');
+                yearInput.reportValidity();
+                isValid = false;
+            } else {
+                yearInput.setCustomValidity('');
+            }
+
+            if (!dateInput.value.trim() || !/^(0[1-9]|1[0-2])\/[0-9]{4}$/.test(dateInput.value)) {
+                dateInput.setCustomValidity('Ingrese una fecha válida en formato MM/AAAA.');
+                dateInput.reportValidity();
+                isValid = false;
+            } else {
+                dateInput.setCustomValidity('');
+            }
+        }
+    });
+
+    if (!isAnyChecked) {
+        const firstCheckbox = document.getElementById(certificationTypes[0]);
+        firstCheckbox.setCustomValidity('Seleccione al menos una titulación/certificación.');
+        firstCheckbox.reportValidity();
+        isValid = false;
+    } else {
+        certificationTypes.forEach(type => {
+            const checkbox = document.getElementById(type);
+            checkbox.setCustomValidity('');
+        });
+    }
+
+    return isValid;
+}
+
+    //validaciones
+    document.getElementById('nxtButton-6').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        //const dispuestoRenovar = validateRadioGroup('renovar-certificacion');
+        //const nivelIglesNoCrtf = validateRadioGroup('nivel-ingles-docente-no-certificado');
+        //const nivelInglesDocente = validateRadioGroup('nivel-ingles-docente');
+        //const cursoEduContinua =  validateCertifications();
+        const cuentaCertificacion = validateRadioGroup('certificacion-ingles');
+        const cursosValidos = validateContinuingEducationCourses();
+        const titulosFormalesValidos = validateFormalTitles(); 
+        // const nivelTitulo = validateRadioGroup('nivel-titulo-select');
+        const tieneTituloIngles = validateRadioGroup('titulo-ensenanza');
+        const nivelActualValido = validateCheckboxGroup('nivel-actual');
+        const aniosExpClases = validateRadioGroup('anos-experiencia');
+
+        let sectoExperienciaValid = true;
+            if (aniosExpClases !== true) {
+                sectoExperienciaValid = validateRadioGroup('sector-experiencia');
+        }
+
+        let isNivelTituloValid = true
+        const tituloEnsenanza = document.querySelector('input[name="titulo-ensenanza"]:checked');
+
+        if (tituloEnsenanza && tituloEnsenanza.value === 'si') {
+            isNivelTituloValid = validateRadioGroup('nivel-titulo-select');
+        }
+
+
+        let dispuestoRenovar = true
+        let nivelInglesDocente = true
+        let cursoEduContinua = true
+        let nivelIglesNoCrtf = true
+
+        // cuando ¿Cuenta con una certificación de su nivel de inglés? es   NO
+        let cuentaCertificacionValue = document.querySelector('input[name="certificacion-ingles"]:checked');
+        if (cuentaCertificacionValue && cuentaCertificacionValue.value === 'no'){
+            nivelIglesNoCrtf = validateRadioGroup('nivel-ingles-docente-no-certificado');
+        } else if (cuentaCertificacionValue.value === 'si'){
+            dispuestoRenovar = validateRadioGroup('renovar-certificacion');
+            nivelInglesDocente = validateRadioGroup('nivel-ingles-docente');
+            cursoEduContinua =  validateCertifications();
+        }
+
+
+        if (dispuestoRenovar && nivelIglesNoCrtf && nivelInglesDocente && cursoEduContinua && cuentaCertificacion && cursosValidos && titulosFormalesValidos && aniosExpClases && sectoExperienciaValid  && nivelActualValido && tieneTituloIngles && isNivelTituloValid) {
+            document.querySelector('.step-7').style.display = "flex";
+            document.querySelector('.step-6').style.display = "none";
+            activateCircleStep(7);
+        }
+
+
+        console.log("nivel titulo" + tieneTituloIngles);
+        console.log(nivelTituloValid);
+    });
+
+
+    //Formulario
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('nivel-titulo').style.display = 'none';
+        function handleRadioChange(event) {
+            const secondQuestionContainer = document.getElementById('nivel-titulo');
+            if (event.target.value == 'si') {
+                secondQuestionContainer.style.display = 'block';
+            } else {
+                secondQuestionContainer.style.display = 'none';
+                document.querySelectorAll('#nivel-titulo input[type=radio]').forEach(function (radio) {
+                    radio.checked = false;
+                });
+                document.querySelectorAll('#nivel-titulo input[type=text], #nivel-titulo input[type=number]').forEach(function (input) {
+                    input.value = '';
+                });
+            }
+        }
+        document.querySelectorAll('input[type=radio][name="titulo-ensenanza"]').forEach(function (radio) {
+            radio.addEventListener('change', handleRadioChange);
+        });
+    });
+
+
+    //Cuenta con una certificacion de su nivel de ingles si/no show or hide content
+    document.addEventListener('DOMContentLoaded', function () {
+        const certificacionInglesRadios = document.querySelectorAll('input[name="certificacion-ingles"]');
+        const segundaPregunta = document.querySelector('.nombre-titulacion-checkbox');
+        const nivelInglesDocente = document.querySelector('.nivel-inglex-checkbox');
+        const renovarCertificacion = document.querySelector('.renovar-checkbox');
+        const noCertificadoCheckbox = document.querySelector('.no-certificado-checkbox');
+
+        const checkboxes = segundaPregunta.querySelectorAll('input[type="checkbox"]');
+        const radiosNivelIngles = nivelInglesDocente.querySelectorAll('input[type="radio"]');
+        const radiosRenovarCertificacion = renovarCertificacion.querySelectorAll('input[type="radio"]');
+        const radiosNoCertificado = noCertificadoCheckbox.querySelectorAll('input[type="radio"]');
+
+        const toggleSegundaPregunta = (event) => {
+            if (event.target.value === 'si') {
+                segundaPregunta.style.display = 'block';
+                nivelInglesDocente.style.display = 'block';
+                renovarCertificacion.style.display = 'block';
+                noCertificadoCheckbox.style.display = 'none';
+            } else {
+                segundaPregunta.style.display = 'none';
+                nivelInglesDocente.style.display = 'none';
+                renovarCertificacion.style.display = 'none';
+                noCertificadoCheckbox.style.display = 'block';
+
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                radiosNivelIngles.forEach(radio => {
+                    radio.checked = false;
+                });
+                radiosRenovarCertificacion.forEach(radio => {
+                    radio.checked = false;
+                });
+                radiosNoCertificado.forEach(radio => {
+                    radio.checked = false;
+                });
+            }
+        };
+
+        certificacionInglesRadios.forEach(radio => {
+            radio.addEventListener('change', toggleSegundaPregunta);
+        });
+
+        // Inicialmente oculta todos los contenedores
+        segundaPregunta.style.display = 'none';
+        nivelInglesDocente.style.display = 'none';
+        renovarCertificacion.style.display = 'none';
+        noCertificadoCheckbox.style.display = 'none';
+    });
+
+
+    //Mencione sus títulos formales relacionados a la enseñanza del idioma inglés y el año de su obtención
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('#licenciatura').addEventListener('change', function () {
+            document.querySelector('input[name="licenciatura-ano"]').disabled = !this.checked;
+            if (!this.checked) document.querySelector('input[name="licenciatura-ano"]').value = '';
+        });
+        document.querySelector('#postgrado').addEventListener('change', function () {
+            document.querySelector('input[name="postgrado-ano"]').disabled = !this.checked;
+            if (!this.checked) document.querySelector('input[name="postgrado-ano"]').value = '';
+        });
+        document.querySelector('#maestria').addEventListener('change', function () {
+            document.querySelector('input[name="maestria-ano"]').disabled = !this.checked;
+            if (!this.checked) document.querySelector('input[name="maestria-ano"]').value = '';
+        });
+        document.querySelector('#doctorado').addEventListener('change', function () {
+            document.querySelector('input[name="doctorado-ano"]').disabled = !this.checked;
+            if (!this.checked) document.querySelector('input[name="doctorado-ano"]').value = '';
+        });
+        document.querySelector('input[name="licenciatura-ano"]').disabled = true;
+        document.querySelector('input[name="postgrado-ano"]').disabled = true;
+        document.querySelector('input[name="maestria-ano"]').disabled = true;
+        document.querySelector('input[name="doctorado-ano"]').disabled = true;
+    });
+
+    //Mencione sus cursos de educación continua obtenidos a nivel internacional relacionados a la enseñanza del idioma inglés
+    document.addEventListener('DOMContentLoaded', function () {
+        const options = ['curso', 'taller', 'seminario', 'diplomado', 'entrenamiento', 'otros'];
+
+        options.forEach(option => {
+            document.querySelector(`#${option}`).addEventListener('change', function () {
+                const checked = this.checked;
+                document.querySelector(`input[name="${option}-ano"]`).disabled = !checked;
+                document.querySelector(`input[name="${option}-horas"]`).disabled = !checked;
+                if (!checked) {
+                    document.querySelector(`input[name="${option}-ano"]`).value = '';
+                    document.querySelector(`input[name="${option}-horas"]`).value = '';
+                }
+            });
+
+            // Inicializar campos como deshabilitados
+            document.querySelector(`input[name="${option}-ano"]`).disabled = true;
+            document.querySelector(`input[name="${option}-horas"]`).disabled = true;
+        });
+    });
+
+    // Mes anio
+    document.querySelectorAll('.fecha-vencimiento').forEach(function (input) {
+        input.addEventListener('input', function (e) {
+            var input = e.target.value;
+            input = input.replace(/[^0-9\/]/g, '');
+            if (input.length == 2 && !input.includes('/')) {
+                input += '/';
+                e.target.value = input;
+            }
+            if (input.length > 7) {
+                e.target.value = input.slice(0, 7);
+            }
+        });
+    });
+
+    //Logica anio y vencimiento
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="nombre-titulacion"]');
+        function updateInputFields(checkbox) {
+            const inputFields = checkbox.closest('.flex.items-center').nextElementSibling.querySelectorAll('input');
+            inputFields.forEach(input => {
+                if (checkbox.checked) {
+                    input.removeAttribute('disabled');
+                } else {
+                    input.setAttribute('disabled', 'disabled');
+                    input.value = '';
+                }
+            });
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                updateInputFields(this);
+            });
+            updateInputFields(checkbox);
+        });
+    });
+
+</script>

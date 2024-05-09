@@ -1,0 +1,197 @@
+<div class="stp step-4">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Señalización en Inglés
+    </h6>
+    <div class="flex flex-wrap">
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="senalizaciones-centro-ingles">
+                    ¿Cuentan con señalética / rotulaciones / letreros hay inglés en su Centro Educativo?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones-centro-ingles" value="si" id="senalizaciones-si" 
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones-centro-ingles" value="no" id="senalizaciones-no"
+                            class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3" id="senalizaciones-centro-educativo">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="senalizaciones_ingles">
+                    Considera que existen señalizaciones en Inglés en su Centro Educativo
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones_ingles" value="si" class="text-[#483eff] border-gray-300" onclick="toggleActividades2('si')"
+                            id="senalizaciones-ingles-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones_ingles" value="no" class="text-[#483eff] border-gray-300" onclick="toggleActividades2('no')"
+                            id="senalizaciones-ingles-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+        
+                    <div class="" id="senalizaciones-ingles-opciones" style="display:none;">
+                        <p class="text-sm font-bold text-[#233559] mt-3">¿Dónde están desplegadas?</p>
+                        <div class="ml-4 pl-4">
+                            <input type="checkbox" id="comedor" name="senalizaciones_ingles_opciones" value="comedor"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="comedor" class="text-sm text-[#233559]">Comedor</label><br>
+                            <input type="checkbox" id="areas-deportivas" name="senalizaciones_ingles_opciones"
+                                value="areas deportivas" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="areas-deportivas" class="text-sm text-[#233559]">Áreas deportivas</label><br>
+                            <input type="checkbox" id="banos" name="senalizaciones_ingles_opciones" value="banos"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="banos" class="text-sm text-[#233559]">Baños</label><br>
+                            <input type="checkbox" id="pasillos" name="senalizaciones_ingles_opciones" value="pasillos"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="pasillos" class="text-sm text-[#233559]">Pasillos</label><br>
+                            <input type="checkbox" id="murales" name="senalizaciones_ingles_opciones" value="murales"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="murales" class="text-sm text-[#233559]">Murales</label><br>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function toggleActividades2(value) {
+                var display = value === 'si' ? 'block' : 'none';
+                document.getElementById('senalizaciones-ingles-opciones').style.display = display;
+            }
+
+            // function toggleActividades3(value) {
+            //     var display = value === 'si' ? 'block' : 'none';
+            //     document.getElementById('senalizaciones-centro-educativo').style.display = display;
+            // }
+            </script> 
+        
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="senaletica">
+                    ¿Cuentan con señalética / rotulaciones / letreros en inglés en el aula de clases?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senaletica" value="si" class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Si</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senaletica" value="no" class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3" id="cantidad-senalizacion-aula">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="cantidad-senalizaciones-aula">
+                    Cantidad de Señalizaciones en Inglés dentro del aula de clases
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cantidad-senalizaciones-aula" value="no_hay"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No hay</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cantidad-senalizaciones-aula" value="1-2"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Hay 1 - 2</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cantidad-senalizaciones-aula" value="3-4"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Hay 3 - 4</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cantidad-senalizaciones-aula" value="5_mas"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Hay 5 o más</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- <script>
+        function toggleActividades4(value) {
+                var display = value === 'si' ? 'block' : 'none';
+                document.getElementById('cantidad-senalizacion-aula').style.display = display;
+            }
+    </script> -->
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-4 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            <div id="nxtButton-4"
+            class="next-stp-4 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+
+<script>
+    // Validaciones
+    document.getElementById('nxtButton-4').addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const haySenaleticaDentroAula = validateRadioGroup('cantidad-senalizaciones-aula')
+        const haySenaleticaAula = validateRadioGroup('senaletica')
+        const haySenalizacionCEOptions = document.querySelector('input[name="senalizaciones_ingles"]:checked');
+        const haySenalizacionCE = validateRadioGroup('senalizaciones_ingles');
+        const senaleticaRotulaciones = validateRadioGroup('senalizaciones-centro-ingles');
+        
+        let isValidSenalizacionCEOptions = true
+        if(haySenalizacionCEOptions && haySenalizacionCEOptions.value === 'si'){
+            isValidSenalizacionCEOptions = validateCheckboxGroup('senalizaciones_ingles_opciones')
+        }
+        
+     
+        if (haySenaleticaDentroAula && haySenaleticaAula && senaleticaRotulaciones && haySenalizacionCE) {
+            document.querySelector('.step-5').style.display = "flex";
+            document.querySelector('.step-4').style.display = "none";
+            activateCircleStep(5);
+        }
+    });
+
+
+    // Manejador de eventos para ocultar setCustomValidity cuando se escribe input
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                this.setCustomValidity('');
+            });
+        });
+    });
+
+
+    const prevButton4 = document.querySelector('.prev-stp-4');
+    prevButton4.addEventListener('click', function(event){
+            document.querySelector('.step-4').style.display = "none";
+            document.querySelector('.step-3').style.display = "flex";
+        })
+</script>

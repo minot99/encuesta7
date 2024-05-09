@@ -1,0 +1,485 @@
+
+
+{% extends "base/vertical_base.html" %}
+{% load static i18n %}
+<script src="{% static '/js/graficos.js' %}" defer></script>
+
+{% block title %}Analytics{% endblock title %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+
+
+{% block page_content %}
+<style>
+    .offcanvas.offcanvas-end{
+        display: none;
+    }
+</style>
+<div class="container-fluid">
+    <!-- Page-Title -->
+    <pre>{{ data_json|safe }}</pre>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Metrica</a>
+                        </li><!--end nav-item-->
+                        <li class="breadcrumb-item"><a href="#">Dashboard</a>
+                        </li><!--end nav-item-->
+                        <li class="breadcrumb-item active">Analytics</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Dashboards Generales</h4>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div>
+    <!-- end page title end breadcrumb -->
+    <!-- end page title end breadcrumb -->
+
+
+
+    <!------------------------------------ INICIO MAPA INTERACTIVO PANAMA ---------------->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Inicio del contenedor Bootstrap -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Tarjeta para el mapa -->
+                <div class="card">
+                    <div class="card-header">
+                        Mapa de Escuelas
+                    </div>
+                    <div class="card-body">
+                        <!-- Contenedor del mapa con Leaflet -->
+                        <div id="map" style="width: 100%; height: 520px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del contenedor Bootstrap -->
+
+    <script>
+        var datosEscuelas = {{ data_json| safe }};
+
+        var map = L.map('map').setView([8.537981, -80.3], 8);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Iterar sobre cada escuela y añadir un marcador al mapa
+        datosEscuelas.forEach(function (escuela) {
+    if (escuela.LATITUD_LONGITUD) {
+        var latLng = escuela.LATITUD_LONGITUD.split(',');
+        if (latLng.length === 2) {
+            var lat = parseFloat(latLng[0]);
+            var lng = parseFloat(latLng[1]);
+            if (!isNaN(lat) && !isNaN(lng)) {
+                var popupContent = `
+                    <div>
+                        <strong>NOMBRE ESCUELA: </strong><span>${escuela.NOMBRE_ESCUELA}</span><br>
+                        <strong>PROVINCIA: </strong><span>${escuela.PROVINCIA}</span><br>
+                        <strong>MATRÍCULA TOTAL: </strong><span id="matricula-${escuela.COD_SIACE}">Cargando...</span><br>
+                        <strong>NUMERO DE DOCENTES: </strong><span id="docentes-${escuela.COD_SIACE}">Cargando...</span>
+                    </div>
+                `;
+                var marker = L.marker([lat, lng]).addTo(map)
+                    .bindPopup(popupContent);
+
+                marker.on('click', function () {
+                    fetch(`/api/matricula_total/${escuela.COD_SIACE}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.error) {
+                                document.getElementById(`matricula-${escuela.COD_SIACE}`).textContent = data.matricula_total;
+                            } else {
+                                document.getElementById(`matricula-${escuela.COD_SIACE}`).textContent = "Información no disponible";
+                            }
+                        });
+                    fetch(`/api/docentes_total/${escuela.COD_SIACE}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (!data.error) {
+                                document.getElementById(`docentes-${escuela.COD_SIACE}`).textContent = data.docentes_total;
+                            } else {
+                                document.getElementById(`docentes-${escuela.COD_SIACE}`).textContent = "Información no disponible";
+                            }
+                        });
+                });
+            }
+        }
+    }
+});
+    </script>
+    <!------------------------------------ FIN MAPA INTERACTIVO PANAMA ---------------->
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">GRAFICOS A NIVEL DE TODO EL PAIS</h4>
+                <h4 class="page-title">INDICADORES DE DESARROLLO PROFESIONAL</h4>
+            </div>
+        </div><!--end col-->
+    </div>
+
+    <!------------------------------------ INICIO INDICADORES DE DESARROLLO PROFESIONAL---------------------------------------------->
+
+    
+    
+    <!---------------------------- INICIO PORCENTAJE DOCENTES CON CERTIFICACIÓN EN INGLES------------------------------>
+    <div class="container-fluid">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="card-title">Porcentaje Docentes Certificados</h4>
+                        </div>
+                    </div> 
+                </div>
+                <div class="card-body">
+                    <div id="porcentajeCertificadosChart"></div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var porcentajeCertificados = '{{ porcentaje_certificados|safe }}';
+        
+            var options = {
+                chart: {
+                    type: 'radialBar',
+                    height: 350
+                },
+                series: [porcentajeCertificados],
+                labels: ['Docentes Certificados'],
+                plotOptions: {
+                    radialBar: {
+                        hollow: {
+                            size: '70%',
+                        },
+                        dataLabels: {
+                            showOn: 'always',
+                            name: {
+                                show: true,
+                                fontSize: '22px',
+                                fontFamily: 'Helvetica, Arial, sans-serif',
+                                fontWeight: 600,
+                                color: '#263238',
+                                offsetY: -10
+                            },
+                            value: {
+                                show: true,
+                                fontSize: '16px',
+                                fontFamily: 'Helvetica, Arial, sans-serif',
+                                fontWeight: 400,
+                                color: '#000',
+                                offsetY: 16,
+                                formatter: function (val) {
+                                    return val + "%";
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        
+            var chart = new ApexCharts(document.querySelector("#porcentajeCertificadosChart"), options);
+            chart.render();
+        });
+        </script>
+    <!---------------------------- FIN PORCENTAJE DOCENTES CON CERTIFICACIÓN EN INGLES------------------------------>
+
+
+
+    <div class="container-fluid">
+        <class class="row">
+
+            <!--------------------------------------- INICIO Nivel De Bilingüismo De Los Docentes-->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="card-title">Nivel de Bilingüismo de los Docentes</h4>
+                            </div><!--end col-->
+                        </div> <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                        <div id="nivelBilinguismoChart"></div> <!-- Contenedor para el gráfico de ApexCharts -->
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div><!--end col-->
+
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <script>
+                fetch('/api/nivel_bilinguismo/')
+                    .then(response => response.json())
+                    .then(data => {
+                        var options = {
+                            chart: {
+                                type: 'bar',
+                                height: 350
+                            },
+                            series: [{
+                                name: 'Número de Docentes',
+                                data: data.niveles.map(nivel => ({ x: nivel.nivel_ingles_docente, y: nivel.total }))
+                            }],
+                            xaxis: {
+                                type: 'category',
+                            },
+                            colors: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                            plotOptions: {
+                                bar: {
+                                    borderRadius: 4,
+                                    horizontal: false,
+                                    distributed: true
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false
+                            },
+                            title: {
+                                text: '',
+                                align: 'left',
+                                style: {
+                                    fontSize: '14px'
+                                }
+                            }
+                        };
+
+                        var chart = new ApexCharts(document.querySelector("#nivelBilinguismoChart"), options);
+                        chart.render();
+                    });
+            </script>
+
+            <!--------------------------------------- FIN Nivel De Bilingüismo De Los Docentes-->
+
+
+
+
+
+            <!--------------------------------------- INCIO Evolución de la Enseñanza del Ingléss-->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="card-title">Evolución de la Enseñanza del Inglés</h4>
+                            </div><!--end col-->
+                        </div> <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                        <div id="evolucionEnsenanzaInglesChart"></div> <!-- Contenedor para el gráfico de ApexCharts -->
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div><!--end col-->
+
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <script>
+                var options = {
+                    chart: {
+                        type: 'line',
+                        height: 350
+                    },
+                    series: [
+                        {
+                            name: 'Porcentaje Habla Inglés',
+                            data: [70, 75, 80, 85]
+                        },
+                        {
+                            name: 'Porcentaje Tiempo Inglés',
+                            data: [50, 45, 65, 60]
+                        },
+                        {
+                            name: 'Tiempo Diálogo Inglés',
+                            data: [10, 5, 25, 35]
+                        }
+                    ],
+                    xaxis: {
+                        categories: ['2020', '2021', '2022', '2023']
+                    },
+                    colors: ['#008FFB', '#00E396', '#775DD0'],
+                    markers: {
+                        size: 4
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    title: {
+                        text: '',
+                        align: 'left',
+                        style: {
+                            fontSize: '14px'
+                        }
+                    }
+                };
+
+                var chart = new ApexCharts(document.querySelector("#evolucionEnsenanzaInglesChart"), options);
+                chart.render();
+            </script>
+
+            <!--------------------------------------- FIN Evolución de la Enseñanza del Ingléss-->
+
+
+
+
+            <!--------------------------------------- INCIO Actividades Bilinguismo------>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Tendencias Actividades de Bilingüismo</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="bilingualActivitiesChart"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Específicos: Curriculum<br>Componente: KIDS y AFTER SCHOOL</h4>
+                                    </div><!--end col-->
+                                </div> <!--end row-->
+                            </div><!--end card-header-->
+                            <div class="card-body">
+                                <div>
+                                    <canvas id="graficaBar"></canvas>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+            <script>
+                // Espera a que el DOM esté listo
+                document.addEventListener('DOMContentLoaded', function () {
+                    fetch('/api/promedios_generales/') // Asegúrate de usar la URL correcta
+                        .then(response => response.json())
+                        .then(data => {
+                            var options = {
+                                chart: {
+                                    type: 'line',
+                                    height: 350
+                                },
+                                series: [{
+                                    name: 'Actividades de Bilingüismo',
+                                    data: [
+                                        data.promedio_tiempo_ingles,
+                                        data.promedio_tiempo_dialogo_ingles,
+                                        data.promedio_cantidad_senalizaciones,
+                                        data.promedio_interaccion_estudiantes
+                                    ]
+                                }],
+                                xaxis: {
+                                    categories: [
+                                        'Tiempo Inglés',
+                                        'Diálogo Inglés',
+                                        'Señalizaciones Aula',
+                                        'Interacción Estudiantes'
+                                    ]
+                                },
+                                stroke: {
+                                    curve: 'straight',
+                                    width: 4
+                                },
+                                colors: ['#FF4560', '#008FFB', '#00E396', '#FEB019'],
+                                markers: {
+                                    size: 5
+                                },
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                yaxis: {
+                                    title: {
+                                        text: 'Promedio (%)'
+                                    }
+                                },
+                                tooltip: {
+                                    y: {
+                                        formatter: function (val) {
+                                            return val + " %"
+                                        }
+                                    }
+                                }
+                            };
+
+                            var chart = new ApexCharts(document.querySelector("#bilingualActivitiesChart"), options);
+                            chart.render();
+                        });
+                });
+            </script>
+            <!--------------------------------------- FIN Actividades Bilinguismo------>
+
+            <!-- Específicos: Perfeccionamiento Docente Componente Capacitación de Profesores Local e Internacional -->
+                    <div class="col-lg-6">
+                        <div class="card" style="height: calc(100% - 16px);">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Específicos: Perfeccionamiento Docente Componente Capacitación de Profesores Local e Internacional</h4>
+                                    </div><!--end col-->
+                                </div> <!--end row-->
+                            </div><!--end card-header-->
+                            <div class="card-body d-flex align-items-center justify-content-center" style="height: 100%;">
+                                <div style="width: 100%;">
+                                    <canvas id="grafica"></canvas>
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                    </div>
+                </div>
+            </div>
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Específicos: Curriculum Componente: KIDS y AFTER SCHOOL (segundo) -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h4 class="card-title">Específicos: Curriculum<br>Componente: KIDS y AFTER SCHOOL</h4>
+                            </div><!--end col-->
+                        </div> <!--end row-->
+                    </div><!--end card-header-->
+                    <div class="card-body">
+                        <div>
+                            <canvas id="graficaBarHorizontal"></canvas>
+                        </div>
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div>
+
+            <!-- Scripts para gráficos -->
+            <!-- Aquí deberías tener el script para el gráfico "graficaBarHorizontal" -->
+        </div>
+    </div>
+
+
+            {% endblock %}
+
+            {% block extra_javascript %}
+
+            <script src="{% static 'libs/apexcharts/apexcharts.min.js' %}"></script>
+            <script src="{% static 'js/pages/analytics-index.init.js' %}"></script>
+
+            {% endblock %}

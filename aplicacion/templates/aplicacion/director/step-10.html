@@ -1,0 +1,609 @@
+<div class="stp step-10">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Evaluación del Impacto Digital en Laboratorios de Inglés e Informática
+    </h6>
+
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿Cuentan con salones o laboratorios de informática?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="salones_laboratorios_informatica" value="si"
+                                class="br-input salones-laboratorios-informatica text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="salones_laboratorios_informatica" value="no"
+                                class="br-input salones-laboratorios-informatica text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿Cuántos salones o laboratorios de informática posee el centro educativo?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="cantidad_salones_laboratorios" value="no_es_posible_responder"
+                                class="cantidad-salones-laboratorios text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No es posible responder</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="cantidad_salones_laboratorios" value="1-2"
+                                class="cantidad-salones-laboratorios text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Hay 1-2</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="cantidad_salones_laboratorios" value="3-4"
+                                class="cantidad-salones-laboratorios text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Hay 3-4</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="cantidad_salones_laboratorios" value="5_o_mas"
+                                class="cantidad-salones-laboratorios text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Hay 5 o más</span>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-12/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-realizadas">
+                    Número de computadoras en cada laboratorio
+                </label>
+                <div class="mt-2">
+                    <div class="flex flex-col pb-2">
+                        <div class="flex items-center">
+                            <input type="text" id="laboratory-name-input"
+                                class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                placeholder="Nombre del laboratorio">
+
+                            <input type="number" id="computer-number-input"
+                                class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                placeholder="Número de computadora" min="1">
+
+                            <button type="button" id="add-laboratory"
+                                class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+
+                        </div>
+                    </div>
+                    <table id="laboratory-table"
+                        class="pt-4 mt-4 w-full leading-normal border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Nombre del laboratorio</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Número de computadora</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="laboratory-list">
+                            <!-- Las filas se añadirán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <style>
+                    /*Estilos de la tabla*/
+                    .item-list:nth-child(odd) {
+                        background-color: #f2f2f2;
+                    }
+
+                    .item-list:nth-child(even) {
+                        background-color: #ffffff;
+                    }
+
+                    .item-list td {
+                        text-align: center;
+                        vertical-align: middle;
+                        padding-top: 4px;
+                        padding-bottom: 4px;
+                    }
+                </style>
+
+                <script>
+                    function setupListLaboratory(addButtonId, laboratoryNameId, computerNumberId, tableId) {
+                        document.getElementById(addButtonId).addEventListener('click', function () {
+                            var laboratoryNameInput = document.getElementById(laboratoryNameId);
+                            var computerNumberInput = document.getElementById(computerNumberId);
+                            var table = document.getElementById(tableId);
+                            var laboratoryName = laboratoryNameInput.value.trim();
+                            var computerNumber = computerNumberInput.value.trim();
+
+                            if (laboratoryName && computerNumber) {
+                                var row = table.insertRow(-1);
+                                row.classList.add('item-list'); // Añadido para aplicar estilos
+
+                                var cell1 = row.insertCell(0);
+                                cell1.textContent = laboratoryName;
+
+                                var cell2 = row.insertCell(1);
+                                cell2.textContent = computerNumber;
+
+                                var cell3 = row.insertCell(2);
+                                cell3.classList.add('flex', 'justify-between', 'items-center'); // Modificado para ajustarse a los estilos
+
+                                // Botón Eliminar
+                                var deleteBtn = document.createElement('button');
+                                deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                                deleteBtn.onclick = function () {
+                                    table.deleteRow(row.rowIndex);
+                                };
+                                cell3.appendChild(deleteBtn);
+
+                                // Botón Editar
+                                var editBtn = document.createElement('span');
+                                editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                                editBtn.onclick = function () {
+                                    var newLaboratoryName = prompt("Editar el nombre del laboratorio:", cell1.textContent);
+                                    if (newLaboratoryName.trim() !== '') {
+                                        cell1.textContent = newLaboratoryName;
+                                    }
+                                    var newComputerNumber = prompt("Editar el número de computadora:", cell2.textContent);
+                                    if (newComputerNumber.trim() !== '') {
+                                        cell2.textContent = newComputerNumber;
+                                    }
+                                };
+                                cell3.appendChild(editBtn);
+
+                                laboratoryNameInput.value = '';
+                                computerNumberInput.value = '';
+                            } else {
+                                alert('Por favor, complete todos los campos.');
+                            }
+                        });
+                    }
+                    document.addEventListener('DOMContentLoaded', function () {
+                        setupListLaboratory('add-laboratory', 'laboratory-name-input', 'computer-number-input', 'laboratory-table');
+                    });
+                </script>
+
+            </div>
+        </div>
+
+        <div class="w-full lg:w-12/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-realizadas">Ingrese marca de lo
+                    equipos, año de fabricación, cuentan con bocina (incorporada o externo), tiene auriculares o
+                    audifonos (incorporados o externos), ¿las computadoras cuentan con microfonos? (incorporados o
+                    externos), ¿Las computadoras tiene acceso a internet? </label>
+                <div class="mt-2">
+                    <div class="flex flex-col pb-2">
+                        <div class="flex items-center">
+                            <input type="text" id="brand-input"
+                                class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                placeholder="Marca">
+                            <input type="number" id="manufacture-year-input"
+                                class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                placeholder="Año de fabricación">
+                            <input type="checkbox" id="has-speaker-input" class="mr-2"> ¿Tiene bocina?
+                            <input type="checkbox" id="has-headphones-input" class="mr-2"> ¿Tiene auriculares?
+                            <input type="checkbox" id="has-microphone-input" class="mr-2"> ¿Tiene micrófono?
+                            <input type="checkbox" id="has-internet-input" class="mr-2"> ¿Tiene internet?
+                            <button type="button" id="add-laboratory-2"
+                                class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                        </div>
+                    </div>
+                    <table id="laboratory-table-2"
+                        class="pt-4 mt-4 w-full leading-normal border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Marca</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Año de fabricación</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Tiene bocina</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Tiene auriculares</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Tiene micrófono</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Tiene internet</th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                    Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="laboratory-list">
+                            <!-- Las filas se añadirán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let currentEditingRow = null; // Guarda la fila que está siendo editada
+
+            function setupListLaboratory2(addButtonId, brandId, manufactureYearId, hasSpeakerId, hasHeadphonesId, hasMicrophoneId, hasInternetId, tableId) {
+                const addButton = document.getElementById(addButtonId);
+                addButton.addEventListener('click', function () {
+                    var brandInput = document.getElementById(brandId);
+                    var manufactureYearInput = document.getElementById(manufactureYearId);
+                    var hasSpeakerInput = document.getElementById(hasSpeakerId);
+                    var hasHeadphonesInput = document.getElementById(hasHeadphonesId);
+                    var hasMicrophoneInput = document.getElementById(hasMicrophoneId);
+                    var hasInternetInput = document.getElementById(hasInternetId);
+                    var table = document.getElementById(tableId);
+
+                    // Si estamos en modo edición, actualizamos la fila actual
+                    if (currentEditingRow) {
+                        currentEditingRow.cells[0].textContent = brandInput.value.trim();
+                        currentEditingRow.cells[1].textContent = manufactureYearInput.value.trim();
+                        currentEditingRow.cells[2].textContent = hasSpeakerInput.checked ? 'Sí' : 'No';
+                        currentEditingRow.cells[3].textContent = hasHeadphonesInput.checked ? 'Sí' : 'No';
+                        currentEditingRow.cells[4].textContent = hasMicrophoneInput.checked ? 'Sí' : 'No';
+                        currentEditingRow.cells[5].textContent = hasInternetInput.checked ? 'Sí' : 'No';
+
+                        // Restablecer para añadir nuevo
+                        addButton.textContent = 'Añadir';
+                        currentEditingRow = null; // Reseteamos la fila en edición
+                    } else {
+                        // Añadir nueva fila
+                        var row = table.insertRow(-1);
+                        row.classList.add('item-list');
+
+                        var cell1 = row.insertCell(0);
+                        cell1.textContent = brandInput.value.trim();
+
+                        var cell2 = row.insertCell(1);
+                        cell2.textContent = manufactureYearInput.value.trim();
+
+                        var cell3 = row.insertCell(2);
+                        cell3.textContent = hasSpeakerInput.checked ? 'Sí' : 'No';
+
+                        var cell4 = row.insertCell(3);
+                        cell4.textContent = hasHeadphonesInput.checked ? 'Sí' : 'No';
+
+                        var cell5 = row.insertCell(4);
+                        cell5.textContent = hasMicrophoneInput.checked ? 'Sí' : 'No';
+
+                        var cell6 = row.insertCell(5);
+                        cell6.textContent = hasInternetInput.checked ? 'Sí' : 'No';
+
+                        var cell7 = row.insertCell(6);
+                        cell7.classList.add('flex', 'justify-between', 'items-center');
+
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                        deleteBtn.onclick = function () {
+                            table.deleteRow(row.rowIndex);
+                        };
+                        cell7.appendChild(deleteBtn);
+
+                        var editBtn = document.createElement('button');
+                        editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                        editBtn.onclick = function () {
+                            event.preventDefault();
+                            // Llenar los campos con los valores de la fila para editar
+                            brandInput.value = row.cells[0].textContent;
+                            manufactureYearInput.value = row.cells[1].textContent;
+                            hasSpeakerInput.checked = row.cells[2].textContent === 'Sí';
+                            hasHeadphonesInput.checked = row.cells[3].textContent === 'Sí';
+                            hasMicrophoneInput.checked = row.cells[4].textContent === 'Sí';
+                            hasInternetInput.checked = row.cells[5].textContent === 'Sí';
+
+                            addButton.textContent = 'Editar';
+                            currentEditingRow = row; // Guardamos la fila actual para editar
+                        };
+                        cell7.appendChild(editBtn);
+                    }
+
+                    // Limpiar campos después de añadir o editar
+                    brandInput.value = '';
+                    manufactureYearInput.value = '';
+                    hasSpeakerInput.checked = false;
+                    hasHeadphonesInput.checked = false;
+                    hasMicrophoneInput.checked = false;
+                    hasInternetInput.checked = false;
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                setupListLaboratory2('add-laboratory-2', 'brand-input', 'manufacture-year-input', 'has-speaker-input', 'has-headphones-input', 'has-microphone-input', 'has-internet-input', 'laboratory-table-2');
+            });
+        </script>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿Existe un laboratorio dedicado al aprendizaje del idioma inglés?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="laboratorio_idioma_ingles" value="si"
+                                class="br-input laboratorio-idioma-ingles text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="laboratorio_idioma_ingles" value="no"
+                                class="br-input laboratorio-idioma-ingles text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿El laboratorio dedicado al aprendizaje del idioma inglés es el mismo que el laboratorio de
+                    informática?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="laboratorio_ingles_informatica_mismo" value="si"
+                                class="br-input laboratorio-ingles-informatica-mismo text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="laboratorio_ingles_informatica_mismo" value="no"
+                                class="br-input laboratorio-ingles-informatica-mismo text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿El laboratorio cuenta con otros recursos que faciliten la enseñanza - aprendizaje del idioma
+                    inglés? (bocina, impresora, proyector, otros)
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="recursos_enseñanza_ingles" value="si"
+                                class="br-input recursos-enseñanza-ingles text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="recursos_enseñanza_ingles" value="no"
+                                class="br-input recursos-enseñanza-ingles text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿Existe Persona encargada de la revisión y verificación del cumplimiento del plan de contenido
+                    de los cursos?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="persona_encargada_verificacion" value="si"
+                                class="br-input persona-encargada-verificacion text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="persona_encargada_verificacion" value="no"
+                                class="br-input persona-encargada-verificacion text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+                <!-- Campo para especificar el nombre del encargado, visible solo si se selecciona "Sí" -->
+                <div class="mt-2 px-4" id="nombre-encargado-container" style="display: none;">
+                    <label for="nombre-encargado" class="block text-sm font-bold text-[#233559]">¿Quién es el
+                        encargado?</label>
+                    <input type="text" id="nombre-encargado" name="nombre_encargado"
+                        class="border-gray-300 rounded-md shadow-sm mt-1 block w-full">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript para mostrar/ocultar el campo del nombre del encargado basado en la selección de la respuesta
+            document.querySelectorAll('input[name="persona_encargada_verificacion"]').forEach((input) => {
+                input.addEventListener('change', function () {
+                    const nombreEncargadoContainer = document.getElementById('nombre-encargado-container');
+                    if (this.value === 'si') {
+                        nombreEncargadoContainer.style.display = 'block';
+                    } else {
+                        nombreEncargadoContainer.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]">
+                    ¿Existe Persona encargada de la revisión y verificación de la disponibilidad y estado del material didáctico?
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="persona_encargada_material" value="si"
+                                class="br-input persona-encargada-material text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="persona_encargada_material" value="no"
+                                class="br-input persona-encargada-material text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </label>
+                <!-- Campo para especificar el nombre del encargado, visible solo si se selecciona "Sí" -->
+                <div class="mt-2 px-4" id="nombre-encargado-material-container" style="display: none;">
+                    <label for="nombre-encargado-material" class="block text-sm font-bold text-[#233559]">¿Quién es el encargado?</label>
+                    <input type="text" id="nombre-encargado-material" name="nombre_encargado_material"
+                        class="border-gray-300 rounded-md shadow-sm mt-1 block w-full">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript para mostrar/ocultar el campo del nombre del encargado basado en la selección de la respuesta
+            document.querySelectorAll('input[name="persona_encargada_material"]').forEach((input) => {
+                input.addEventListener('change', function () {
+                    const nombreEncargadoMaterialContainer = document.getElementById('nombre-encargado-material-container');
+                    if (this.value === 'si') {
+                        nombreEncargadoMaterialContainer.style.display = 'block';
+                    } else {
+                        nombreEncargadoMaterialContainer.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+<div class="w-full lg:w-6/12 px-4 mb-3">
+<div class="relative w-full mb-3">
+    <label class="block text-sm font-bold text-[#233559]">
+        ¿Existe Persona encargada de la revisión y verificación de la capacitación de los docentes?
+        <div class="mt-2 px-4">
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_capacitacion" value="si"
+                    class="br-input persona-encargada-capacitacion text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+            </label><br>
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_capacitacion" value="no"
+                    class="br-input persona-encargada-capacitacion text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+            </label>
+        </div>
+    </label>
+    <!-- Campo para especificar el nombre del encargado, visible solo si se selecciona "Sí" -->
+    <div class="mt-2 px-4" id="nombre-encargado-capacitacion-container" style="display: none;">
+        <label for="nombre-encargado-capacitacion" class="block text-sm font-bold text-[#233559]">¿Quién es el encargado?</label>
+        <input type="text" id="nombre-encargado-capacitacion" name="nombre_encargado_capacitacion"
+            class="border-gray-300 rounded-md shadow-sm mt-1 block w-full">
+    </div>
+</div>
+</div>
+
+<script>
+// JavaScript para mostrar/ocultar el campo del nombre del encargado basado en la selección de la respuesta
+document.querySelectorAll('input[name="persona_encargada_capacitacion"]').forEach((input) => {
+    input.addEventListener('change', function () {
+        const nombreEncargadoCapacitacionContainer = document.getElementById('nombre-encargado-capacitacion-container');
+        if (this.value === 'si') {
+            nombreEncargadoCapacitacionContainer.style.display = 'block';
+        } else {
+            nombreEncargadoCapacitacionContainer.style.display = 'none';
+        }
+    });
+});
+</script>
+
+
+<div class="w-full lg:w-6/12 px-4 mb-3">
+<div class="relative w-full mb-3">
+    <label class="block text-sm font-bold text-[#233559]">
+        ¿Existe Persona encargada de la revisión y verificación de los laboratorios y materiales digitales?
+        <div class="mt-2 px-4">
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_laboratorios" value="si"
+                    class="br-input persona-encargada-laboratorios text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+            </label><br>
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_laboratorios" value="no"
+                    class="br-input persona-encargada-laboratorios text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+            </label>
+        </div>
+    </label>
+    <!-- Campo para especificar el nombre del encargado, visible solo si se selecciona "Sí" -->
+    <div class="mt-2 px-4" id="nombre-encargado-laboratorios-container" style="display: none;">
+        <label for="nombre-encargado-laboratorios" class="block text-sm font-bold text-[#233559]">¿Quién es el encargado?</label>
+        <input type="text" id="nombre-encargado-laboratorios" name="nombre_encargado_laboratorios"
+            class="border-gray-300 rounded-md shadow-sm mt-1 block w-full">
+    </div>
+</div>
+</div>
+
+<script>
+// JavaScript para mostrar/ocultar el campo del nombre del encargado basado en la selección de la respuesta
+document.querySelectorAll('input[name="persona_encargada_laboratorios"]').forEach((input) => {
+    input.addEventListener('change', function () {
+        const nombreEncargadoLaboratoriosContainer = document.getElementById('nombre-encargado-laboratorios-container');
+        if (this.value === 'si') {
+            nombreEncargadoLaboratoriosContainer.style.display = 'block';
+        } else {
+            nombreEncargadoLaboratoriosContainer.style.display = 'none';
+        }
+    });
+});
+</script>
+
+<div class="w-full lg:w-6/12 px-4 mb-3">
+<div class="relative w-full mb-3">
+    <label class="block text-sm font-bold text-[#233559]">
+        ¿Existe una persona encargada del seguimiento del Programa Panamá Bilingüe en el Centro Educativo?
+        <div class="mt-2 px-4">
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_panama_bilingue" value="si"
+                    class="br-input persona-encargada-panama-bilingue text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+            </label><br>
+            <label class="inline-flex items-center">
+                <input type="radio" name="persona_encargada_panama_bilingue" value="no"
+                    class="br-input persona-encargada-panama-bilingue text-[#483eff] border-gray-300">
+                <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+            </label>
+        </div>
+    </label>
+    <!-- Campo para especificar el nombre del encargado, visible solo si se selecciona "Sí" -->
+    <div class="mt-2 px-4" id="nombre-encargado-panama-bilingue-container" style="display: none;">
+        <label for="nombre-encargado-panama-bilingue" class="block text-sm font-bold text-[#233559]">¿Quién es el encargado?</label>
+        <input type="text" id="nombre-encargado-panama-bilingue" name="nombre_encargado_panama_bilingue"
+            class="border-gray-300 rounded-md shadow-sm mt-1 block w-full">
+    </div>
+</div>
+</div>
+
+<script>
+// JavaScript para mostrar/ocultar el campo del nombre del encargado basado en la selección de la respuesta
+document.querySelectorAll('input[name="persona_encargada_panama_bilingue"]').forEach((input) => {
+    input.addEventListener('change', function () {
+        const nombreEncargadoPanamaBilingueContainer = document.getElementById('nombre-encargado-panama-bilingue-container');
+        if (this.value === 'si') {
+            nombreEncargadoPanamaBilingueContainer.style.display = 'block';
+        } else {
+            nombreEncargadoPanamaBilingueContainer.style.display = 'none';
+        }
+    });
+});
+</script>
+
+
+
+    </div>
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+        <button id="boton-enviar" type="button"
+            class="visita mt-6 justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onclick="window.location.href='/gracias/'">Enviar</button>
+    </div>
+
+    
+</div>

@@ -1,0 +1,77 @@
+<div class="stp step-1">
+    <div class="container mx-auto px-4">
+        <div class="instructions bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-center font-bold text-xl mb-4">Instrucciones para completar el Instrumento Digital de
+                Caracterización de Centros Educativos Bilingües</h2>
+            <p><strong>Objetivo:</strong></p>
+            <ul class="list-disc list-inside mb-4">
+                <li>Este cuestionario tiene como finalidad recoger información sobre la realidad, situaciones y retos
+                    que enfrenta su centro educativo.</li>
+                <li>No se busca evaluar ni juzgar individualmente, sino entender mejor las necesidades para proporcionar
+                    apoyo y recursos necesarios a cada centro educativo bilingüe.</li>
+            </ul>
+            <p><strong>Acceso e Ingreso:</strong></p>
+            <ul class="list-disc list-inside mb-4">
+                <li>Acceda al cuestionario a través del sitio web <a
+                        href="https://caracterizacionpanamabilingue-aeekxgs7da-uc.a.run.app/"
+                        class="text-blue-500 link-formulario-click">https://caracterizacionpanamabilingue-aeekxgs7da-uc.a.run.app/</a>
+                </li>
+                <li>Utilice su usuario y contraseña del correo institucional para iniciar sesión.</li>
+            </ul>
+            <p><strong>Completar el instrumento:</strong></p>
+            <ul class="list-disc list-inside mb-4">
+                <li>El cuestionario está dividido en varias secciones.</li>
+                <li>Responda las preguntas con la mayor honestidad posible para reflejar la situación actual de su
+                    centro educativo.</li>
+            </ul>
+            <p><strong>Visualización de Progreso:</strong></p>
+            <p>En la parte superior de la página, encontrará una barra de progreso que muestra cuánto del cuestionario
+                ha completado.</p>
+            <p><strong>Guardar y Continuar Más Tarde:</strong></p>
+            <ul class="list-disc list-inside mb-4">
+                <li>Si necesita más tiempo para recopilar información o desea verificar sus respuestas antes de enviar,
+                    puede guardar sus respuestas y continuar completando el cuestionario más tarde.</li>
+                <li>Para guardar, seleccione la opción “Guardar” disponible en cualquier momento durante el llenado del
+                    cuestionario.</li>
+            </ul>
+            <p><strong>Envío del instrumento:</strong></p>
+            <p>Una vez que haya completado todas las secciones y esté seguro/a de sus respuestas, podrá enviar el
+                cuestionario en la opción “Enviar”. Asegúrese de revisar todas sus respuestas antes de enviarlas
+                definitivamente.</p>
+            <p><strong>Asistencia y Soporte Técnico:</strong></p>
+            <p>Si encuentra problemas técnicos o tiene preguntas sobre cómo acceder o completar el cuestionario, puede
+                contactar al soporte técnico a través de <a
+                    href="mailto:soporte-ester@meduca.edu.pa">soporte-ester@meduca.edu.pa</a> o escribiendo al WhatsApp
+                al 63493003.</p>
+            <p><strong>Confidencialidad, Seguridad y Privacidad de la Información:</strong></p>
+            <p>Toda la información proporcionada será tratada con estricta confidencialidad y se utilizará para los
+                fines del proyecto de caracterización de centros educativos bilingües y del Ministerio de Educación.</p>
+        </div>
+        <div class="btns flex justify-between">
+            <div class="visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                type="submit">Atrás</div>
+
+            <div id="nxtButton-1"
+                class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                type="submit" style="cursor: pointer;">Siguiente</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Funcion para activar circle steps
+    function activateCircleStep(stepNumber) {
+        const circleSteps = document.querySelectorAll(".step");
+        circleSteps.forEach(circle => {
+            circle.classList.remove("active");
+        });
+        circleSteps[stepNumber - 1].classList.add("active");
+    }
+
+    var btnNext = document.getElementById('nxtButton-1')
+    btnNext.addEventListener('click', function(event) {
+        document.querySelector('.step-2').style.display = "flex";
+        document.querySelector('.step-1').style.display = "none";
+        activateCircleStep(2);
+    });
+</script>

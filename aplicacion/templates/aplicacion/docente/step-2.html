@@ -1,0 +1,289 @@
+<form id="form-docente" action="{% url 'form_docente' %}" method="POST">
+    {% csrf_token %}
+    <div class="stp step-2">
+        <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+            Información Personal del Docente
+        </h6>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]">
+                        Nombre del docente
+                    </label>
+                    <input type="text" name="nombre-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="Escribe tu nombre" id="nombre-docente" value="{{ nombre }}">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]">
+                        Apellido del docente
+                    </label>
+                    <input type="text" name="apellido-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="Escribe tu apellido" id="apellido-docente" value="{{ apellido }}">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="cedula-docente">
+                        Cédula del docente
+                    </label>
+                    <input type="text" name="cedula-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="Coloca tu cédula" min="0" id="cedula-docente" value="{{ cedula_usuario }}">
+                </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="tel-ofi-docente">
+                        Teléfono oficina del docente
+                    </label>
+                    <input type="tel" name="tel-ofi-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="Escriba el teléfono de oficina del docente" id="tel-oficina-docente">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="tel-per-docente">
+                        Teléfono personal del docente
+                    </label>
+                    <input type="tel" name="tel-per-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="Escribe tu teléfono personal" id="tel-personal-docente">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="correo-inst-docente">
+                        Correo institucional del docente
+                    </label>
+                    <input type="email" name="correo-inst-docente"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                        placeholder="example@example.com" id="correo-inst-docente" value="{{ correo_usuario }}">
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="porcentaje-planes-completados">
+                        Porcentaje de planes completados en su totalidad al final del año.
+                    </label>
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="porcentaje-planes-completados" value="0-24"
+                                class="text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">0 - 24%</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="porcentaje-planes-completados" value="25-49"
+                                class="text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">25 - 49%</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="porcentaje-planes-completados" value="50-74"
+                                class="text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">50 - 74%</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="porcentaje-planes-completados" value="75-100"
+                                class="text-[#483eff] border-gray-300">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">75 - 100%</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="ajuste_plan_estudios">
+                        Se ajusta el Plan de clase al plan de estudios (Contraste entre el Plan de estudio y la
+                        planificación
+                        /programación del docente) (año 2023)
+                    </label>
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ajuste_plan_estudios" value="muy_en_desacuerdo"
+                                class="text-[#483eff] border-gray-300" id="ajuste-muy-en-desacuerdo">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Muy en desacuerdo</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ajuste_plan_estudios" value="en_desacuerdo"
+                                class="text-[#483eff] border-gray-300" id="ajuste-en-desacuerdo">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">En desacuerdo</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ajuste_plan_estudios" value="de_acuerdo"
+                                class="text-[#483eff] border-gray-300" id="ajuste-de-acuerdo">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">De acuerdo</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="ajuste_plan_estudios" value="muy_de_acuerdo"
+                                class="text-[#483eff] border-gray-300" id="ajuste-muy-de-acuerdo">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Muy de acuerdo</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-3">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]" for="dicta-mas-de-un-nivel">
+                        ¿Dicta usted más de un nivel?
+                    </label>
+                    <div class="mt-2 px-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="dicta-mas-de-un-nivel" value="si" id="dicta-nivel-si"
+                                class="br-input text-[#483eff] border-gray-300" onchange="toggleNiveles(true)">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                        </label><br>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="dicta-mas-de-un-nivel" value="no" id="dicta-nivel-no"
+                                class="br-input text-[#483eff] border-gray-300" onchange="toggleNiveles(false)">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="px-4 relative w-full mb-3" id="niveles" style="min-height: 100px; display: none;">
+                    <label class="block text-sm font-bold text-[#233559]">
+                        ¿Qué niveles?
+                    </label>
+                    <div class="mt-2 px-4">
+                        <div class="mt-2 px-4">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="niveles" value="Primaria"
+                                    class="text-[#483eff] border-gray-300">
+                                <span class="ml-2 text-sm font-medium text-[#233559]">Primaria</span>
+                            </label><br>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="niveles" value="Pre-media"
+                                    class="text-[#483eff] border-gray-300">
+                                <span class="ml-2 text-sm font-medium text-[#233559]">Pre-media</span>
+                            </label><br>
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" name="niveles" value="Media"
+                                    class="text-[#483eff] border-gray-300">
+                                <span class="ml-2 text-sm font-medium text-[#233559]">Media</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btns flex justify-between">
+            <div class="prev-stp visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                type="submit">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+                type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            <div id="nxtButton-2"
+                class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                type="submit" style="cursor: pointer;">Siguiente</div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function toggleNiveles(enable) {
+        var nivelesDiv = document.getElementById('niveles');
+        if (enable) {
+            nivelesDiv.style.display = 'block';
+        } else {
+            nivelesDiv.style.display = 'none';
+            document.querySelectorAll('#niveles input[type="checkbox"]').forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        }
+    }
+
+    function validateInput(input) {
+        if (!input.value.trim()) {
+            input.setCustomValidity('Este campo es obligatorio.');
+            input.reportValidity();
+            return false;
+        } else {
+            input.setCustomValidity('');
+            return true;
+        }
+    }
+
+    function validateCheckboxGroup(checkboxGroupName) {
+        const checkboxes = document.querySelectorAll(`input[name="${checkboxGroupName}"]:checked`);
+        if (checkboxes.length === 0) {
+            const firstCheckbox = document.querySelector(`input[name="${checkboxGroupName}"]`);
+            firstCheckbox.setCustomValidity('Seleccione al menos una opción.');
+            firstCheckbox.reportValidity();
+            return false;
+        } else {
+            document.querySelector(`input[name="${checkboxGroupName}"]`).setCustomValidity('');
+            return true;
+        }
+    }
+
+    function validateRadioGroup(radioGroupName) {
+        const radio = document.querySelector(`input[name="${radioGroupName}"]:checked`);
+        if (!radio) {
+            const firstRadio = document.querySelector(`input[name="${radioGroupName}"]`);
+            firstRadio.setCustomValidity('Seleccione una opción.');
+            firstRadio.reportValidity();
+            return false;
+        } else {
+            document.querySelector(`input[name="${radioGroupName}"]`).setCustomValidity('');
+            return true;
+        }
+    }
+
+    document.getElementById('nxtButton-2').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const isValidCedulaDocente = validateInput(document.getElementById('cedula-docente'));
+        const isValidApellidoDocente = validateInput(document.getElementById('apellido-docente'));
+        const isValidNombreDocente = validateInput(document.getElementById('nombre-docente'));
+
+        if (isValidCedulaDocente && isValidApellidoDocente && isValidNombreDocente) {
+            const formData = new FormData(document.getElementById('form-docente'));
+
+            fetch('/form_docente/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector('.step-3').style.display = "flex";
+                        document.querySelector('.step-2').style.display = "none";
+                        activateCircleStep(3);
+                    } else {
+                        // Handle errors or validation issues
+                        console.error('Submission failed', data.errors);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', function () {
+                this.setCustomValidity('');
+            });
+        });
+    });
+</script>

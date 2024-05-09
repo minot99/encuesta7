@@ -1,0 +1,900 @@
+<div class="stp step-7">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Alianza y Colaboraciones
+    </h6>
+    <div class="flex flex-wrap">
+
+        <!-- Pregunta 1 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+              <label class="block text-sm font-bold text-[#233559]" for="actividades_ingles">
+                ¿Se realizan actividades especiales que promueven el aprendizaje y uso del idioma inglés que nacen desde su Centro Educativo?
+              </label>
+              <label class="block text-sm font-medium text-[#233559]" for="actividades-propio-centro">
+                  Actividades especiales en inglés que realiza la institución
+                  internamente y/o con otras instituciones (concursos, clubes de inglés, otros).
+              </label>
+              <div class="mt-2 px-4">
+                <label class="inline-flex items-center">
+                  <input type="radio" name="actividades_ingles" value="nunca" class="text-[#483eff] border-gray-300" id="actividades-ingles-nunca">
+                  <span class="ml-2 text-sm font-medium text-[#233559]">Nunca o Casi Nunca</span>
+                </label><br>
+                <label class="inline-flex items-center">
+                  <input type="radio" name="actividades_ingles" value="algunas_veces" class="text-[#483eff] border-gray-300" id="actividades-ingles-algunas-veces">
+                  <span class="ml-2 text-sm font-medium text-[#233559]">Algunas veces</span>
+                </label><br>
+                <label class="inline-flex items-center">
+                  <input type="radio" name="actividades_ingles" value="muchas_veces" class="text-[#483eff] border-gray-300" id="actividades-ingles-muchas-veces">
+                  <span class="ml-2 text-sm font-medium text-[#233559]">Muchas veces</span>
+                </label><br>
+                <label class="inline-flex items-center">
+                  <input type="radio" name="actividades_ingles" value="siempre" class="text-[#483eff] border-gray-300" id="actividades-ingles-siempre">
+                  <span class="ml-2 text-sm font-medium text-[#233559]">Siempre o Casi Siempre</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="w-full lg:w-12/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-realizadas">
+                    Mencione las realizadas durante el último año (2023) y las planificadas para 2024. (nombre, cantidad y organizadores)
+                </label>
+                <div class="mt-2">
+                    <div class="flex flex-col pb-2">
+                        <div class="flex items-center">
+                            <input type="text" id="activity-input" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Actividad">
+                            <input type="number" id="quantity-input" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Cantidad" min="1">
+                            <input type="text" id="organizer-input" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Organizadores">
+                            <input type="file" id="file-upload" style="display: none;" />
+                            <button type="button" id="add-activity" class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                        </div>
+                    </div>
+                    <table id="activity-table" class="pt-4 mt-4 w-full leading-normal border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actividad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Cantidad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Organizadores</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-list" class="border">
+                            <!-- Las filas se añadirán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function setupListActivity(addButtonId, inputId, quantityId, organizerId, tableId) {
+                document.getElementById(addButtonId).addEventListener('click', function () {
+                    var input = document.getElementById(inputId);
+                    var quantityInput = document.getElementById(quantityId);
+                    var organizerInput = document.getElementById(organizerId);
+                    var table = document.getElementById(tableId);
+                    var itemName = input.value.trim();
+                    var quantity = quantityInput.value.trim();
+                    var organizers = organizerInput.value.trim();
+            
+                    if (itemName && quantity && organizers) {
+                        var row = table.insertRow(-1);
+                        row.classList.add('item-list'); // Añadido para aplicar estilos
+            
+                        var cell1 = row.insertCell(0);
+                        cell1.textContent = itemName;
+            
+                        var cell2 = row.insertCell(1);
+                        cell2.textContent = quantity;
+            
+                        var cell3 = row.insertCell(2);
+                        cell3.textContent = organizers;
+            
+                        var cell4 = row.insertCell(3);
+                        cell4.classList.add('flex', 'justify-between', 'items-center'); // Modificado para ajustarse a los estilos
+            
+                        // Botón Eliminar
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                        deleteBtn.onclick = function () {
+                            table.deleteRow(row.rowIndex);
+                        };
+                        cell4.appendChild(deleteBtn);
+            
+                        // Botón Editar
+                        var editBtn = document.createElement('span');
+                        editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                        editBtn.onclick = function () {
+                            var newName = prompt("Editar el nombre del elemento:", cell1.textContent);
+                            if (newName.trim() !== '') {
+                                cell1.textContent = newName;
+                            }
+                        };
+                        cell4.appendChild(editBtn);
+            
+                        // Botón Subir
+                        // Botón Subir
+                        var uploadBtn = document.createElement('button');
+                        uploadBtn.innerHTML = '<i class="fas fa-upload" title="Subir Foto/Video"></i>';
+                        uploadBtn.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            // Desencadena el clic en el input de tipo 'file'
+                            document.getElementById('file-upload').click();
+                        });
+                        cell4.appendChild(uploadBtn);
+                                        
+                        input.value = '';
+                        quantityInput.value = '';
+                        organizerInput.value = '';
+                    } else {
+                        alert('Por favor, complete todos los campos.');
+                    }
+                });
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setupListActivity('add-activity', 'activity-input', 'quantity-input', 'organizer-input', 'activity-table');
+            });
+            </script>
+
+        <!-- Pregunta 2 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="titulos-formales">
+                    ¿Cuantos estudiantes participan actualmente en estas actividades por grado?
+                </label>
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Pre Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                {% for grado in "123456" %}
+                <div class="flex items-center mb-4 justify-between" id="primaria-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-primaria-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for grado in "789" %}
+                <div class="flex items-center mb-4 justify-between" id="pre-media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-premedia-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+        
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="">
+                            10° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 11 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-11">
+                            11° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-11" id="particicipa-ppb-11"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 12 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-12">
+                            12° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-12" id="particicipa-ppb-12"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-meduca-centro">
+                    ¿Se realizan actividades especiales que promueven el aprendizaje y uso del idioma inglés que
+                    nacen desde MEDUCA y se realizan en su Centro Educativo?
+                </label>
+                <label class="block text-sm font-medium text-[#233559]" for="actividades-meduca-centro">
+                    Actividades especiales en inglés que realiza la institución internamente y / o con otras instituciones (concursos, clubes de inglés,
+                    otros).
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_meduca_centro" value="Nunca o Casi Nunca"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Nunca o Casi Nunca</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_meduca_centro" value="Algunas veces"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Algunas veces</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_meduca_centro" value="Muchas veces"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Muchas veces</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_meduca_centro" value="Siempre o Casi Siempre"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Siempre o Casi Siempre</span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!---xd-->
+
+        <div class="w-full lg:w-12/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-realizadas">
+                    Mencione las realizadas durante el último año (2023) y las planificadas para 2024. (nombre, cantidad y empresa, institución organizadora)
+                </label>
+                <div class="mt-2">
+                    <div class="flex flex-col pb-2">
+                        <div class="flex items-center">
+                            <input type="text" id="activity-input-2" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Actividad">
+                            <input type="number" id="quantity-input-2" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Cantidad" min="1">
+                            <input type="text" id="organizer-input-2" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Organizadores">
+                            <input type="file" id="file-upload" style="display: none;" />
+                            <button type="button" id="add-activity-2" class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                        </div>
+                    </div>
+                    <table id="activity-table-2" class="pt-4 mt-4 w-full leading-normal border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actividad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Cantidad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Organizadores</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-list" class="border">
+                            <!-- Las filas se añadirán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function setupListActivity2(addButtonId, inputId, quantityId, organizerId, tableId) {
+                document.getElementById(addButtonId).addEventListener('click', function () {
+                    var input = document.getElementById(inputId);
+                    var quantityInput = document.getElementById(quantityId);
+                    var organizerInput = document.getElementById(organizerId);
+                    var table = document.getElementById(tableId);
+                    var itemName = input.value.trim();
+                    var quantity = quantityInput.value.trim();
+                    var organizers = organizerInput.value.trim();
+            
+                    if (itemName && quantity && organizers) {
+                        var row = table.insertRow(-1);
+                        row.classList.add('item-list'); // Añadido para aplicar estilos
+            
+                        var cell1 = row.insertCell(0);
+                        cell1.textContent = itemName;
+            
+                        var cell2 = row.insertCell(1);
+                        cell2.textContent = quantity;
+            
+                        var cell3 = row.insertCell(2);
+                        cell3.textContent = organizers;
+            
+                        var cell4 = row.insertCell(3);
+                        cell4.classList.add('flex', 'justify-between', 'items-center'); // Modificado para ajustarse a los estilos
+            
+                        // Botón Eliminar
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                        deleteBtn.onclick = function () {
+                            table.deleteRow(row.rowIndex);
+                        };
+                        cell4.appendChild(deleteBtn);
+            
+                        // Botón Editar
+                        var editBtn = document.createElement('span');
+                        editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                        editBtn.onclick = function () {
+                            var newName = prompt("Editar el nombre del elemento:", cell1.textContent);
+                            if (newName.trim() !== '') {
+                                cell1.textContent = newName;
+                            }
+                        };
+                        cell4.appendChild(editBtn);
+            
+                        // Botón Subir
+                        // Botón Subir
+                        var uploadBtn = document.createElement('button');
+                        uploadBtn.innerHTML = '<i class="fas fa-upload" title="Subir Foto/Video"></i>';
+                        uploadBtn.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            // Desencadena el clic en el input de tipo 'file'
+                            document.getElementById('file-upload').click();
+                        });
+                        cell4.appendChild(uploadBtn);
+                                        
+                        input.value = '';
+                        quantityInput.value = '';
+                        organizerInput.value = '';
+                    } else {
+                        alert('Por favor, complete todos los campos.');
+                    }
+                });
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setupListActivity2('add-activity-2', 'activity-input-2', 'quantity-input-2', 'organizer-input-2', 'activity-table-2');
+            });
+            </script>
+
+
+        <!-- Pregunta 4 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="titulos-formales">
+                    ¿Cuantos estudiantes participan actualmente en estas actividades por grado?
+                </label>
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Pre Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                {% for grado in "123456" %}
+                <div class="flex items-center mb-4 justify-between" id="primaria-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-primaria-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for grado in "789" %}
+                <div class="flex items-center mb-4 justify-between" id="pre-media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-premedia-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+        
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="">
+                            10° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 11 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-11">
+                            11° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-11" id="particicipa-ppb-11"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 12 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-12">
+                            12° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-12" id="particicipa-ppb-12"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="actividades-externas-centro">
+                    ¿Se realizan actividades especiales que promueven el aprendizaje y uso del idioma inglés que
+                    nacen desde fundaciones, otras instituciones, empresa privada u otros organismos que se realizan
+                    en su Centro Educativo? 
+                </label>
+                <label class="block text-sm font-medium text-[#233559]" for="actividades-externas-centro">
+                    Actividades especiales en inglés que realiza la institución internamente
+                    y / o con otras instituciones (concursos, clubes de inglés, otros)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_externas_centro" value="Nunca o Casi Nunca"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Nunca o Casi Nunca</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_externas_centro" value="Algunas veces"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Algunas veces</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_externas_centro" value="Muchas veces"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Muchas veces</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="actividades_externas_centro" value="Siempre o Casi Siempre"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Siempre o Casi Siempre</span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-full lg:w-12/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="">
+                    Mencione las realizadas durante el último año (2023) y las planificadas para 2024. (nombre, cantidad y organizadores)
+                </label>
+                <div class="mt-2">
+                    <div class="flex flex-col pb-2">
+                        <div class="flex items-center">
+                            <input type="text" id="activity-input-3" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Actividad">
+                            <input type="number" id="quantity-input-3" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Cantidad" min="1">
+                            <input type="text" id="organizer-input-3" class="br-input input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm" placeholder="Organizadores">
+                            <input type="file" id="file-upload" style="display: none;" />
+                            <button type="button" id="add-activity-3" class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                        </div>
+                    </div>
+                    <table id="activity-table-3" class="pt-4 mt-4 w-full leading-normal border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Actividad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Cantidad</th>
+                                <th class="px-5 py-3 border-b-2 border-r border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Organizadores</th>
+                                <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activity-list" class="border">
+                            <!-- Las filas se añadirán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function setupListActivity3(addButtonId, inputId, quantityId, organizerId, tableId) {
+                document.getElementById(addButtonId).addEventListener('click', function () {
+                    var input = document.getElementById(inputId);
+                    var quantityInput = document.getElementById(quantityId);
+                    var organizerInput = document.getElementById(organizerId);
+                    var table = document.getElementById(tableId);
+                    var itemName = input.value.trim();
+                    var quantity = quantityInput.value.trim();
+                    var organizers = organizerInput.value.trim();
+            
+                    if (itemName && quantity && organizers) {
+                        var row = table.insertRow(-1);
+                        row.classList.add('item-list'); // Añadido para aplicar estilos
+            
+                        var cell1 = row.insertCell(0);
+                        cell1.textContent = itemName;
+            
+                        var cell2 = row.insertCell(1);
+                        cell2.textContent = quantity;
+            
+                        var cell3 = row.insertCell(2);
+                        cell3.textContent = organizers;
+            
+                        var cell4 = row.insertCell(3);
+                        cell4.classList.add('flex', 'justify-between', 'items-center'); // Modificado para ajustarse a los estilos
+            
+                        // Botón Eliminar
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                        deleteBtn.onclick = function () {
+                            table.deleteRow(row.rowIndex);
+                        };
+                        cell4.appendChild(deleteBtn);
+            
+                        // Botón Editar
+                        var editBtn = document.createElement('span');
+                        editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                        editBtn.onclick = function () {
+                            var newName = prompt("Editar el nombre del elemento:", cell1.textContent);
+                            if (newName.trim() !== '') {
+                                cell1.textContent = newName;
+                            }
+                        };
+                        cell4.appendChild(editBtn);
+            
+                        // Botón Subir
+                        // Botón Subir
+                        var uploadBtn = document.createElement('button');
+                        uploadBtn.innerHTML = '<i class="fas fa-upload" title="Subir Foto/Video"></i>';
+                        uploadBtn.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            // Desencadena el clic en el input de tipo 'file'
+                            document.getElementById('file-upload').click();
+                        });
+                        cell4.appendChild(uploadBtn);
+                                        
+                        input.value = '';
+                        quantityInput.value = '';
+                        organizerInput.value = '';
+                    } else {
+                        alert('Por favor, complete todos los campos.');
+                    }
+                });
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                setupListActivity3('add-activity-3', 'activity-input-3', 'quantity-input-3', 'organizer-input-3', 'activity-table-3');
+            });
+            </script>
+
+        <!-- Pregunta 6 -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="titulos-formales">
+                    ¿Cuantos estudiantes participan actualmente en estas actividades por grado?
+                </label>
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Pre Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+        
+                {% for grado in "123456" %}
+                <div class="flex items-center mb-4 justify-between" id="primaria-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-primaria-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for grado in "789" %}
+                <div class="flex items-center mb-4 justify-between" id="pre-media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-premedia-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+        
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="">
+                            10° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="" id=""
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 11 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-11">
+                            11° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-11" id="particicipa-ppb-11"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 12 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-12">
+                            12° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-12" id="particicipa-ppb-12"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="ninguno">Ninguno</option>
+                            <option value="algunos">Algunos</option>
+                            <option value="alrededor-mitad">Alrededor de la mitad</option>
+                            <option value="mas-mitad">Más de la mitad</option>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-7 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            <div id="nxtButton-7"
+            class="next-stp-7 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+<script>
+
+    //validaciones
+    document.getElementById('nxtButton-7').addEventListener('click', function (e) {
+        e.preventDefault();
+        const frecuenciaInteractuanActores = validateRadioGroup('actividades_ingles');
+
+        if (frecuenciaInteractuanActores) {
+            document.querySelector('.step-8').style.display = "flex";
+            document.querySelector('.step-7').style.display = "none";
+        }
+    });
+    
+
+     // boton atras
+     const prevButton7 = document.querySelector('.prev-stp-7');
+    prevButton7.addEventListener('click', function(event){
+            document.querySelector('.step-7').style.display = "none";
+            document.querySelector('.step-6').style.display = "flex";
+    })
+</script>

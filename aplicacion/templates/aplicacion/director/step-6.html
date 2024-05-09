@@ -1,0 +1,659 @@
+<div class="stp step-6">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Información del Plan de Estudios y Práctica Docente
+    </h6>
+
+    <div class="flex flex-wrap">
+        <!-- Códigos del plan de estudio (malla curricular) disponibles en el Centro Educativo -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="planes_estudio_disponibles">
+                    ¿Están disponibles los planes de estudio (malla curricular por grado) del Centro Educativo para
+                    todos los
+                    docentes?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="planes_estudio_disponibles" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="planes-estudio-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="planes_estudio_disponibles" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="planes-estudio-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="planes-estudio-disponibles">
+                    ¿Están disponibles los planes de estudio (malla curricular por grado) disponibles en el Centro
+                    Educativo
+                    (año 2023) para todos los docentes?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="planes-estudio-disponibles" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="planes-estudio-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="planes-estudio-disponibles" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="planes-estudio-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="asignaturas_ingles">
+                    ¿En el plan de estudios se tienen diagramadas otras asignaturas en idioma inglés? (Ejemplo: Math,
+                    Science, etc.)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="asignaturas_ingles" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="asignaturas-ingles-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="asignaturas_ingles" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="asignaturas-ingles-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="asignaturas_ingles_ce">
+                    ¿En el Centro Educativo, se dictan otras asignaturas en idioma inglés? (Ejemplo: Math, Science,
+                    etc.)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="asignaturas_ingles_ce" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="asignaturas-ingles-si"
+                            onclick="toggleAsignaturas('si')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="asignaturas_ingles_ce" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="asignaturas-ingles-no"
+                            onclick="toggleAsignaturas('no')">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                    <div id="cuales-asignaturas" style="display:none; padding-top: 0.5 rem;">
+                        <div class="flex flex-col">
+                            <label class="text-sm font-bold text-[#233559] mb-2">¿Cuales?</label>
+                            <div class="flex items-center">
+                                <input type="text" id="item-input"
+                                    class="input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                    placeholder="Math">
+                                <button type="button" id="add-item"
+                                    class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                            </div>
+                        </div>
+                        <div class="">
+                            <ul id="item-list" class="item-list list-disc pl-8">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //Mostrar u ocultar según la selección ¿En el Centro Educativo, se dictan otras asignaturas en idioma inglés
+            function toggleAsignaturas(value) {
+                var display = value === 'si' ? 'block' : 'none';
+                document.getElementById('cuales-asignaturas').style.display = display;
+            }
+
+            // List ¿En el Centro Educativo, se dictan otras asignaturas en idioma inglés
+            function setupList(addButtonId, inputId, listId) {
+                document.getElementById(addButtonId).addEventListener('click', function () {
+                    var input = document.getElementById(inputId);
+                    var list = document.getElementById(listId);
+                    var itemName = input.value.trim();
+
+                    if (itemName) {
+                        var listItem = document.createElement('li');
+                        listItem.classList.add('flex', 'justify-between', 'items-center', 'bg-white', 'text-[#233559]', 'p-2', 'rounded-lg', 'border-b', 'border-gray-300');
+
+                        var textSpan = document.createElement('span');
+                        textSpan.textContent = itemName;
+                        textSpan.classList.add('flex-grow', 'mr-2'); // Asegura que el texto ocupe el espacio disponible
+                        listItem.appendChild(textSpan);
+
+                        var buttonsContainer = document.createElement('div');
+                        buttonsContainer.classList.add('flex', 'justify-end', 'items-center', 'space-x-2', 'w-1/12'); // Contenedor para los botones, ajustando el ancho al 10%
+
+                        var deleteBtn = document.createElement('button');
+                        deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                        deleteBtn.classList.add('text-red-500');
+                        deleteBtn.onclick = function () {
+                            list.removeChild(listItem);
+                        };
+                        buttonsContainer.appendChild(deleteBtn);
+
+                        var editBtn = document.createElement('span');
+                        editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                        editBtn.classList.add('text-blue-500');
+                        editBtn.onclick = function () {
+                            var newName = prompt("Editar el nombre del elemento:", textSpan.textContent);
+                            if (newName.trim() !== '') {
+                                textSpan.textContent = newName;
+                            }
+                        };
+                        buttonsContainer.appendChild(editBtn);
+
+                        listItem.appendChild(buttonsContainer);
+
+                        list.appendChild(listItem);
+                        input.value = '';
+                    } else {
+                        alert('Por favor, escriba el nombre de un elemento.');
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                setupList('add-item', 'item-input', 'item-list');
+            });
+        </script>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="ajuste_plan_estudios">
+                    Se ajusta el Plan de clase al plan de estudios (Contraste entre el Plan de estudio y la
+                    planificación
+                    /programación del docente) (año 2023)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="ajuste_plan_estudios" value="muy_en_desacuerdo"
+                            class="text-[#483eff] border-gray-300" id="ajuste-muy-en-desacuerdo">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Muy en desacuerdo</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="ajuste_plan_estudios" value="en_desacuerdo"
+                            class="text-[#483eff] border-gray-300" id="ajuste-en-desacuerdo">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">En desacuerdo</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="ajuste_plan_estudios" value="de_acuerdo"
+                            class="text-[#483eff] border-gray-300" id="ajuste-de-acuerdo">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">De acuerdo</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="ajuste_plan_estudios" value="muy_de_acuerdo"
+                            class="text-[#483eff] border-gray-300" id="ajuste-muy-de-acuerdo">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Muy de acuerdo</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="horas_ingles">
+                    Horas dedicadas a la enseñanza del inglés (basado en el plan de estudios)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_ingles" value="1-5" class="text-[#483eff] border-gray-300"
+                            id="horas-ingles-1-5">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">1-5</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_ingles" value="6-10" class="text-[#483eff] border-gray-300"
+                            id="horas-ingles-6-10">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">6-10</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_ingles" value="11-15" class="text-[#483eff] border-gray-300"
+                            id="horas-ingles-11-15">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">11-15</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_ingles" value="15+" class="text-[#483eff] border-gray-300"
+                            id="horas-ingles-15+">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">15+</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="horas_teoricas">
+                    Horas teóricas impartidas dentro del plan de estudio (horas por semana)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_teoricas" value="1-5" class="text-[#483eff] border-gray-300"
+                            id="horas-teoricas-1-5">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">1-5</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_teoricas" value="6-10" class="text-[#483eff] border-gray-300"
+                            id="horas-teoricas-6-10">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">6-10</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_teoricas" value="11-15" class="text-[#483eff] border-gray-300"
+                            id="horas-teoricas-11-15">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">11-15</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_teoricas" value="15+" class="text-[#483eff] border-gray-300"
+                            id="horas-teoricas-15+">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">15+</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="horas_practicas">
+                    Horas prácticas impartidas dentro del plan de estudio (horas por semana)
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_practicas" value="1-5" class="text-[#483eff] border-gray-300"
+                            id="horas-practicas-1-5">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">1-5</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_practicas" value="6-10" class="text-[#483eff] border-gray-300"
+                            id="horas-practicas-6-10">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">6-10</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_practicas" value="11-15" class="text-[#483eff] border-gray-300"
+                            id="horas-practicas-11-15">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">11-15</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="horas_practicas" value="15+" class="text-[#483eff] border-gray-300"
+                            id="horas-practicas-15+">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">15+</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="curso_ingles_after_school">
+                    En su centro educativo, ¿se realizan cursos de inglés tipo "After School" para los estudiantes?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="curso_ingles_after_school" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="curso-ingles-after-school-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="curso_ingles_after_school" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="curso-ingles-after-school-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="cursos-ingles-after-school">
+                    Mencione los cursos de inglés tipo "After School" para los estudiantes que se realizan en su Centro
+                    Educativo
+                </label>
+                <div>
+                    <div class="flex flex-col">
+                        <div class="flex items-center">
+                            <input type="text" id="course-input"
+                                class="input-field pr-2 mr-2 w-full border-gray-300 rounded-lg shadow-sm"
+                                placeholder="Mencione el curso">
+                            <button type="button" id="add-course"
+                                class="add-btn ml-2 px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-lg">Añadir</button>
+                        </div>
+                    </div>
+                    <div class="">
+                        <ul id="course-list" class="item-list list-disc pl-8">
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                setupList_after_school('add-course', 'course-input', 'course-list', 'second-course-list');
+                setupGradeDisplay();
+
+                function setupList_after_school(addButtonId, inputId, listId, secondListId) {
+                    document.getElementById(addButtonId).addEventListener('click', function () {
+                        var input = document.getElementById(inputId);
+                        var list = document.getElementById(listId);
+                        var itemName = input.value.trim();
+
+                        if (itemName) {
+                            var listItem = document.createElement('li');
+                            listItem.classList.add('flex', 'justify-between', 'items-center', 'bg-white', 'text-[#233559]', 'p-2', 'rounded-lg', 'border-b', 'border-gray-300');
+
+                            var textSpan = document.createElement('span');
+                            textSpan.textContent = itemName;
+                            textSpan.classList.add('flex-grow', 'mr-2');
+                            listItem.appendChild(textSpan);
+
+                            var buttonsContainer = document.createElement('div');
+                            buttonsContainer.classList.add('flex', 'justify-end', 'items-center', 'space-x-2', 'w-1/12'); // Contenedor para los botones, ajustando el ancho al 10%
+
+                            var deleteBtn = document.createElement('button');
+                            deleteBtn.innerHTML = '<i class="fas fa-trash" title="Eliminar"></i>';
+                            deleteBtn.classList.add('text-red-500');
+                            deleteBtn.onclick = function () {
+                                list.removeChild(listItem);
+                                var itemsSecondList = document.getElementById(secondListId).getElementsByTagName('li');
+                                for (var i = 0; i < itemsSecondList.length; i++) {
+                                    if (itemsSecondList[i].textContent === itemName) {
+                                        itemsSecondList[i].parentNode.removeChild(itemsSecondList[i]);
+                                        break;
+                                    }
+                                }
+                            };
+                            buttonsContainer.appendChild(deleteBtn);
+
+                            var editBtn = document.createElement('span');
+                            editBtn.innerHTML = '<i class="fas fa-edit" title="Editar"></i>';
+                            editBtn.classList.add('text-blue-500');
+                            editBtn.onclick = function () {
+                                var newName = prompt("Editar el nombre del elemento:", textSpan.textContent);
+                                if (newName.trim() !== '') {
+                                    textSpan.textContent = newName;
+                                }
+                            };
+
+                            buttonsContainer.appendChild(editBtn);
+                            listItem.appendChild(buttonsContainer);
+
+                            list.appendChild(listItem);
+                            updateSecondList(itemName, secondListId);
+                            input.value = '';
+                        } else {
+                            alert('Por favor, escriba el nombre de un elemento.');
+                        }
+                    });
+                }
+
+                function updateSecondList(itemName, secondListId) {
+                    var secondList = document.getElementById(secondListId);
+                    if (secondList) {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = itemName;
+                        secondList.appendChild(listItem);
+                    }
+                }
+
+                function setupGradeDisplay() {
+                    var checkboxInicial = document.getElementById('inicial');
+                    var checkboxPrimaria = document.getElementById('primaria');
+                    var checkboxPreMedia = document.getElementById('pre-media');
+                    var checkboxMedia = document.getElementById('media');
+
+                    checkboxInicial.addEventListener('change', toggleGradeDisplay);
+                    checkboxPrimaria.addEventListener('change', toggleGradeDisplay);
+                    checkboxPreMedia.addEventListener('change', toggleGradeDisplay);
+                    checkboxMedia.addEventListener('change', toggleGradeDisplay);
+
+                    function toggleGradeDisplay() {
+                        var gradesContainer = document.getElementById('second-course-list');
+                        gradesContainer.innerHTML = ''; // Limpiar el contenedor
+
+                        if (checkboxInicial.checked) {
+                            gradesContainer.innerHTML += 'Pre Kinder, Kinder<br>';
+                        }
+                        if (checkboxPrimaria.checked) {
+                            gradesContainer.innerHTML += 'Grado 1, Grado 2, Grado 3, Grado 4, Grado 5, Grado 6<br>';
+                        }
+                        if (checkboxPreMedia.checked) {
+                            gradesContainer.innerHTML += 'Grado 7, Grado 8, Grado 9<br>';
+                        }
+                        if (checkboxMedia.checked) {
+                            gradesContainer.innerHTML += 'Grado 10, Grado 11, Grado 12<br>';
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="participacion_cursos">
+                    ¿Cuántos estudiantes participan actualmente en estos cursos After school por grado?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participacion_cursos" value="ninguno"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Ninguno</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participacion_cursos" value="algunos"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Algunos</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participacion_cursos" value="alrededor_de_la_mitad"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Alrededor de la mitad</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participacion_cursos" value="mas_de_la_mitad_o_todos"
+                            class="text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Más de la mitad o todos</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="senialetica_ingles">
+                    ¿Cuentan con señalética / rotulaciones / letreros en inglés en su Centro Educativo?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senialetica_ingles" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="senialetica-ingles-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senialetica_ingles" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="senialetica-ingles-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="senalizaciones_ingles">
+                    Considera que existen señalizaciones en Inglés en su Centro Educativo
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones_ingles" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="senalizaciones-ingles-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="senalizaciones_ingles" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="senalizaciones-ingles-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+
+                    <div id="senalizaciones-ingles-opciones" style="display:none;">
+                        <p class="text-sm font-bold text-[#233559] mt-3">¿Dónde están desplegadas?</p>
+                        <div class="ml-4 pl-4">
+                            <input type="checkbox" id="comedor" name="senalizaciones_ingles_opciones" value="comedor"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="comedor" class="text-sm text-[#233559]">Comedor</label><br>
+                            <input type="checkbox" id="areas-deportivas" name="senalizaciones_ingles_opciones"
+                                value="areas deportivas"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="areas-deportivas" class="text-sm text-[#233559]">Áreas deportivas</label><br>
+                            <input type="checkbox" id="banos" name="senalizaciones_ingles_opciones" value="banos"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="banos" class="text-sm text-[#233559]">Baños</label><br>
+                            <input type="checkbox" id="pasillos" name="senalizaciones_ingles_opciones" value="pasillos"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="pasillos" class="text-sm text-[#233559]">Pasillos</label><br>
+                            <input type="checkbox" id="murales" name="senalizaciones_ingles_opciones" value="murales"
+                                class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+                            <label for="murales" class="text-sm text-[#233559]">Murales</label><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="cooperacion_participacion_ppb">
+                    ¿Existe cooperación y participación entre los profesores capacitados en PPB?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cooperacion_participacion_ppb" value="si"
+                            class="br-input text-[#483eff] border-gray-300" id="cooperacion-participacion-ppb-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cooperacion_participacion_ppb" value="no"
+                            class="br-input text-[#483eff] border-gray-300" id="cooperacion-participacion-ppb-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="cooperacion_participacion_ppb_no_ppb">
+                    ¿Existe cooperación y participación entre profesores capacitados en PPB y los profesores no
+                    capacitados en el Programa?
+                </label>
+                <div class="mt-2 px-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cooperacion_participacion_ppb_no_ppb" value="si"
+                            class="br-input text-[#483eff] border-gray-300"
+                            id="cooperacion-participacion-ppb-no-ppb-si">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="cooperacion_participacion_ppb_no_ppb" value="no"
+                            class="br-input text-[#483eff] border-gray-300"
+                            id="cooperacion-participacion-ppb-no-ppb-no">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript para mostrar/ocultar las opciones basado en la selección del usuario
+            document.getElementById("senalizaciones-ingles-si").addEventListener('change', function () {
+                if (this.checked) {
+                    document.getElementById("senalizaciones-ingles-opciones").style.display = "block";
+                }
+            });
+
+            document.getElementById("senalizaciones-ingles-no").addEventListener('change', function () {
+                if (this.checked) {
+                    document.getElementById("senalizaciones-ingles-opciones").style.display = "none";
+                }
+            });
+        </script>
+    </div>
+
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-6 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+        <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer"
+            type="submit">
+            <span class="block">Guardar y continuar luego</span>
+        </div>
+        <div id="nxtButton-6"
+            class="next-stp-6 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+<script>
+    // valdiaciones
+    document.getElementById('nxtButton-6').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        
+        const existeCooperacionProfesoresCapac = validateRadioGroup('cooperacion_participacion_ppb_no_ppb');
+        const existeCooperacionProfesores = validateRadioGroup('cooperacion_participacion_ppb');
+        const existeCooperacion = validateRadioGroup('cooperacion_participacion_ppb');
+        const consideraExisteSenialCE = validateRadioGroup('senalizaciones_ingles');
+        const cuantasSeñaleticaCE = validateRadioGroup('senialetica_ingles');
+        const cuantoEstudiantesAF = validateRadioGroup('participacion_cursos');
+        const seRealizaAfterSchool = validateRadioGroup('curso_ingles_after_school');
+        const horasPracticas = validateRadioGroup('horas_practicas');
+        const horasTeoricasPlanEst = validateRadioGroup('horas_teoricas');
+        const horasEnsenianzaIngles= validateRadioGroup('horas_ingles');
+        const seAjustaPlanYPlanif = validateRadioGroup('ajuste_plan_estudios');
+        const seDictanOtrasCheeckd = document.querySelector('input[name="asignaturas_ingles_ce"]:checked');
+        const seDictanOtrasAsig = validateRadioGroup('asignaturas_ingles_ce');
+        const planDiagramadas = validateRadioGroup('asignaturas_ingles');
+        const disponiblePlanesMalla = validateRadioGroup('planes-estudio-disponibles');
+        const disponiblePlanes = validateRadioGroup('planes_estudio_disponibles');
+        
+        let cualesAsignaturasInges = true;
+        if(seDictanOtrasCheeckd.value === 'si'){
+            const actividadesList = document.getElementById('item-list').getElementsByTagName('li').length;
+            isValidActividades = actividadesList > 0; 
+            if (!isValidActividades) { 
+                const actividadInput = document.getElementById('item-input');
+                actividadInput.setCustomValidity('Añade al menos una actividad.');
+                actividadInput.reportValidity();
+            } else {
+                document.getElementById('item-input').setCustomValidity('');
+            }
+        }
+
+        if (existeCooperacionProfesoresCapac && existeCooperacionProfesores && existeCooperacion && consideraExisteSenialCE && cuantasSeñaleticaCE && cuantoEstudiantesAF && seRealizaAfterSchool && horasPracticas && horasTeoricasPlanEst && horasEnsenianzaIngles && seAjustaPlanYPlanif && cualesAsignaturasInges && disponiblePlanes && disponiblePlanesMalla && planDiagramadas && seDictanOtrasAsig) {
+            document.querySelector('.step-7').style.display = "flex";
+            document.querySelector('.step-6').style.display = "none";
+        }
+    });
+
+     // boton atras
+     const prevButton6 = document.querySelector('.prev-stp-6');
+    prevButton6.addEventListener('click', function(event){
+            document.querySelector('.step-6').style.display = "none";
+            document.querySelector('.step-5').style.display = "flex";
+    })
+
+</script>

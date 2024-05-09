@@ -1,0 +1,997 @@
+<div class="stp step-5">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Información de participación en el Programa Panamá Bilingüe
+    </h6>
+
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="participa_ppb">
+                    Participa Activamente en PPB
+                </label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participa_ppb" value="si" class="br-input text-[#483eff] border-gray-300">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">Sí</span>
+                    </label><br>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="participa_ppb" value="no" class="br-input text-[#483eff] border-gray-300"
+                            id="participa-ppb">
+                        <span class="ml-2 text-sm font-medium text-[#233559]">No</span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="estudiantes-nivel-ppb">
+                    Cantidad de Estudiantes en PPB
+                </label>
+
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Pre Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="pre-kinder-ppb" id="pre-kinder-ppb"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center mb-4 justify-between" id="prekinder-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="estudiantes-ppb">
+                            Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="kinder-ppb-select" id="kinder-ppb-select"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                {% for grado in "123456" %}
+                <div class="flex items-center mb-4 justify-between" id="primaria-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-primaria-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">  
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for grado in "789" %}
+                <div class="flex items-center mb-4 justify-between" id="pre-media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-premedia-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="participa-ppb-{{grado}}" id="particicipa-ppb-{{grado}}"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                             <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="">
+                            10° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="particicipa-ppb-10" id="particicipa-ppb-10"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 11 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-11">
+                            11° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="particicipa-ppb-11" id="particicipa-ppb-11"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Grado 12 -->
+                <div class="flex items-center mb-4 justify-between" id="media-ppb-grado">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-12">
+                            12° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="particicipa-ppb-12" id="particicipa-ppb-12"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-20">1 - 20</option>
+                            <option value="21-40">21 - 40</option>
+                            <option value="41-60">41 - 60</option>
+                            <option value="60-80">60 - 80</option>
+                            <option value="80+">80 a más</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                
+                var prekinderPpb = document.querySelectorAll("#prekinder-ppb-grado");
+                var estudiantePpb = document.querySelectorAll("#primaria-ppb-grado");
+                var estudiantePreMediaPpb = document.querySelectorAll("#pre-media-ppb-grado");
+                var estudianteMediaPpb = document.querySelectorAll("#media-ppb-grado");
+                
+                var checkboxInicial = document.getElementById('inicial');
+                var checkboxPrimaria = document.getElementById('primaria');
+                var checkboxPreMedia = document.getElementById('pre-media');
+                var checkboxMedia = document.getElementById('media');
+
+                function toggleInicial() {
+                    prekinderPpb.forEach(function (elemento) {
+                        if (checkboxInicial.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxInicial.addEventListener('change', toggleInicial);
+                toggleInicial();
+
+                function togglePrimaria() {
+                    estudiantePpb.forEach(function (elemento) {
+                        if (checkboxPrimaria.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPrimaria.addEventListener('change', togglePrimaria);
+                togglePrimaria();
+
+                function togglePreMedia() {
+                    estudiantePreMediaPpb.forEach(function (elemento) {
+                        if (checkboxPreMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPreMedia.addEventListener('change', togglePreMedia);
+                togglePreMedia();
+
+                function toggleMedia() {
+                    estudianteMediaPpb.forEach(function (elemento) {
+                        if (checkboxMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxMedia.addEventListener('change', toggleMedia);
+                toggleMedia();
+            });
+        </script>
+
+
+
+<div class="w-full lg:w-6/12 px-4 mb-3">
+<div class="relative w-full mb-3">
+    <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-ppb">
+        Cantidad de Docentes Capacitados localmente en el PPB por grado
+    </label>
+    <!-- Pre Kinder -->
+    <div class="flex items-center mb-4 justify-between docentes-capacitados-inicial-ppb" id="docentes-capacitados-prekinder-ppb">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-prekinder">
+                Pre Kinder
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-capacitados-prekinder" id="docentes-capacitados-prekinder"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Kinder -->
+    <div class="flex items-center mb-4 justify-between docentes-capacitados-inicial-ppb" id="docentes-capacitados-kinder-ppb">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-kinder">
+                Kinder
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-capacitados-kinder" id="docentes-capacitados-kinder"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Primaria -->
+    {% for grado in "123456" %}
+    <div class="flex items-center mb-4 justify-between docentes-capacitados-primaria-ppb" id="docentes-capacitados-primaria-ppb-{{grado}}">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-primaria-{{grado}}">
+                {{grado}}° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-capacitados-primaria-{{grado}}" id="docentes-capacitados-primaria-{{grado}}"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">  
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pre-media -->
+    {% for grado in "789" %}
+    <div class="flex items-center mb-4 justify-between docentes-capacitados-premedia-ppb" id="docentes-capacitados-premedia-ppb-{{grado}}">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-premedia-{{grado}}">
+                {{grado}}° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-capacitados-premedia-{{grado}}" id="docentes-capacitados-premedia-{{grado}}"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                 <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Grados de Media -->
+    <!-- 10° Grado -->
+<div class="flex items-center mb-4 justify-between docentes-capacitados-media-ppb" id="docentes-capacitados-media-ppb-10">
+<div class="w-1/3 px-4">
+    <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-media-10">
+        10° Grado
+    </label>
+</div>
+<div class="w-2/3 px-4">
+    <select name="docentes-capacitados-media-10" id="docentes-capacitados-media-10"
+    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+        <option value="" disabled selected>Seleccione</option>
+        <option value="1-5">1 - 5</option>
+        <option value="6-10">6 - 10</option>
+        <option value="11-15">11 - 15</option>
+        <option value="15+">15+</option>
+    </select>
+</div>
+</div>
+
+<!-- 11° Grado -->
+<div class="flex items-center mb-4 justify-between docentes-capacitados-media-ppb" id="docentes-capacitados-media-ppb-11">
+<div class="w-1/3 px-4">
+    <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-media-11">
+        11° Grado
+    </label>
+</div>
+<div class="w-2/3 px-4">
+    <select name="docentes-capacitados-media-11" id="docentes-capacitados-media-11"
+    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+        <option value="" disabled selected>Seleccione</option>
+        <option value="1-5">1 - 5</option>
+        <option value="6-10">6 - 10</option>
+        <option value="11-15">11 - 15</option>
+        <option value="15+">15+</option>
+    </select>
+</div>
+</div>
+
+<!-- 12° Grado -->
+<div class="flex items-center mb-4 justify-between docentes-capacitados-media-ppb" id="docentes-capacitados-media-ppb-12">
+<div class="w-1/3 px-4">
+    <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-media-12">
+        12° Grado
+    </label>
+</div>
+<div class="w-2/3 px-4">
+    <select name="docentes-capacitados-media-12" id="docentes-capacitados-media-12"
+    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+        <option value="" disabled selected>Seleccione</option>
+        <option value="1-5">1 - 5</option>
+        <option value="6-10">6 - 10</option>
+        <option value="11-15">11 - 15</option>
+        <option value="15+">15+</option>
+    </select>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    
+    var docentesCapacitadosInicial = document.querySelectorAll(".docentes-capacitados-inicial-ppb");
+    var docentesCapacitadosPrimariaPpb = document.querySelectorAll(".docentes-capacitados-primaria-ppb");
+    var docentesCapacitadosPreMediaPpb = document.querySelectorAll(".docentes-capacitados-premedia-ppb");
+    var docentesCapacitadosMediaPpb = document.querySelectorAll(".docentes-capacitados-media-ppb");
+    
+    // Assuming there are checkboxes to toggle visibility for each section
+    var checkboxInicial = document.getElementById('inicial');
+    var checkboxPrimaria = document.getElementById('primaria');
+    var checkboxPreMedia = document.getElementById('pre-media');
+    var checkboxMedia = document.getElementById('media');
+
+    // Toggle functions for each section
+    function toggleDocenteInicial() {
+        docentesCapacitadosInicial.forEach(function (elemento) {
+            elemento.style.display = checkboxInicial.checked ? "flex" : "none";
+        });
+    }
+    checkboxInicial.addEventListener('change', toggleDocenteInicial);
+    toggleDocenteInicial();
+
+    function toggleDocentePrimaria() {
+        docentesCapacitadosPrimariaPpb.forEach(function (elemento) {
+            elemento.style.display = checkboxPrimaria.checked ? "flex" : "none";
+        });
+    }
+    checkboxPrimaria.addEventListener('change', toggleDocentePrimaria);
+    toggleDocentePrimaria();
+
+    function toggleDocentePreMedia() {
+        docentesCapacitadosPreMediaPpb.forEach(function (elemento) {
+            elemento.style.display = checkboxPreMedia.checked ? "flex" : "none";
+        });
+    }
+    checkboxPreMedia.addEventListener('change', toggleDocentePreMedia);
+    toggleDocentePreMedia();
+
+    function toggleDocenteMedia() {
+        docentesCapacitadosMediaPpb.forEach(function (elemento) {
+            elemento.style.display = checkboxMedia.checked ? "flex" : "none";
+        });
+    }
+    checkboxMedia.addEventListener('change', toggleDocenteMedia);
+    toggleDocenteMedia();
+});
+</script>
+
+
+
+<div class="w-full lg:w-6/12 px-4 mb-3">
+<div class="relative w-full mb-3">
+    <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-examen">
+        Cantidad de Docentes capacitados localmente que aprobaron el exámen por grado
+    </label>
+    <!-- Pre Kinder -->
+    <div class="flex items-center mb-4 justify-between inicial-aprobados-docente" id="docentes-aprobados-prekinder">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-prekinder-select">
+                Pre Kinder
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-prekinder" id="docentes-aprobados-prekinder-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Kinder -->
+    <div class="flex items-center mb-4 justify-between inicial-aprobados-docente" id="docentes-aprobados-kinder">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-kinder-select">
+                Kinder
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-kinder" id="docentes-aprobados-kinder-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Primaria -->
+    {% for grado in "123456" %}
+    <div class="flex items-center mb-4 justify-between primaria-aprobados-docente" id="docentes-aprobados-primaria-{{grado}}">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-primaria-{{grado}}-select">
+                {{grado}}° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-primaria-{{grado}}" id="docentes-aprobados-primaria-{{grado}}-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">  
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pre-media -->
+    {% for grado in "789" %}
+    <div class="flex items-center mb-4 justify-between pre-media-aprobados-docente" id="docentes-aprobados-premedia-{{grado}}">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-premedia-{{grado}}-select">
+                {{grado}}° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-premedia-{{grado}}" id="docentes-aprobados-premedia-{{grado}}-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                 <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Grados de Media -->
+    <!-- 10° Grado -->
+    <div class="flex items-center mb-4 justify-between media-aprobados-docente" id="docentes-aprobados-media-10">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-media-10-select">
+                10° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-media-10" id="docentes-aprobados-media-10-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 11° Grado -->
+    <div class="flex items-center mb-4 justify-between media-aprobados-docente" id="docentes-aprobados-media-11">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-media-11-select">
+                11° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-media-11" id="docentes-aprobados-media-11-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 12° Grado -->
+    <div class="flex items-center mb-4 justify-between media-aprobados-docente" id="docentes-aprobados-media-12">
+        <div class="w-1/3 px-4">
+            <label class="block text-sm font-bold text-[#233559]" for="docentes-aprobados-media-12-select">
+                12° Grado
+            </label>
+        </div>
+        <div class="w-2/3 px-4">
+            <select name="docentes-aprobados-media-12" id="docentes-aprobados-media-12-select"
+            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="1-5">1 - 5</option>
+                <option value="6-10">6 - 10</option>
+                <option value="11-15">11 - 15</option>
+                <option value="15+">15+</option>
+            </select>
+        </div>
+    </div>
+</div>
+</div>
+
+        <script>
+            var checkboxInicial = document.getElementById('inicial');
+            var checkboxPrimaria = document.getElementById('primaria');
+            var checkboxPreMedia = document.getElementById('pre-media');
+            var checkboxMedia = document.getElementById('media');
+
+            var aprobadosDocentesInicial = document.querySelectorAll(".inicial-aprobados-docente");
+            var aprobadosDocentesPrimaria = document.querySelectorAll(".primaria-aprobados-docente");
+            var aprobadosDocentesPreMedia = document.querySelectorAll(".pre-media-aprobados-docente");
+            var aprobadosDocentesMedia = document.querySelectorAll(".media-aprobados-docente");
+
+            function toggleInicial() {
+                aprobadosDocentesInicial.forEach(function (elemento) {
+                    if (checkboxInicial.checked) {
+                        elemento.style.display = "flex";
+                    } else {
+                        elemento.style.display = "none";
+                    }
+                });
+            }
+            checkboxInicial.addEventListener('change', toggleInicial);
+            toggleInicial();
+
+            function togglePrimaria() {
+                aprobadosDocentesPrimaria.forEach(function (elemento) {
+                        if (checkboxPrimaria.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPrimaria.addEventListener('change', togglePrimaria);
+                togglePrimaria();
+
+                function togglePreMedia() {
+                    aprobadosDocentesPreMedia.forEach(function (elemento) {
+                        if (checkboxPreMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPreMedia.addEventListener('change', togglePreMedia);
+                togglePreMedia();
+
+                function toggleMedia() {
+                    aprobadosDocentesMedia.forEach(function (elemento) {
+                        if (checkboxMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxMedia.addEventListener('change', toggleMedia);
+                toggleMedia();
+        </script>
+
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-capacitados-extranjero">
+                    Cantidad que se capacitaron en el extranjero por grado
+                </label>
+                <!-- Pre Kinder -->
+                <div class="flex items-center mb-4 justify-between inicial-capacitados-extranjero" id="docentes-capacitados-extranjero-prekinder">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-prekinder"> Pre Kinder
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-prekinder" id="docentes-extranjero-prekinder"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Kinder -->
+                <div class="flex items-center mb-4 justify-between inicial-capacitados-extranjero" id="docentes-capacitados-extranjero-kinder">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-kinder"> Kinder </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-kinder" id="docentes-extranjero-kinder"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Primaria -->
+                {% for grado in "123456" %}
+                <div class="flex items-center mb-4 justify-between primaria-capacitados-extranjero" id="docentes-capacitados-extranjero-primaria-{{grado}}">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-primaria-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-primaria-{{grado}}" id="docentes-extranjero-primaria-{{grado}}"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Pre-media -->
+                {% for grado in "789" %}
+                <div class="flex items-center mb-4 justify-between premedia-capacitados-extranjero" id="docentes-capacitados-extranjero-premedia-{{grado}}">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-premedia-{{grado}}">
+                            {{grado}}° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-premedia-{{grado}}" id="docentes-extranjero-premedia-{{grado}}"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- Grados de Media -->
+                <!-- 10° Grado -->
+                <div class="flex items-center mb-4 justify-between media-capacitados-extranjero" id="docentes-capacitados-extranjero-media-10">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-media-10"> 10° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-media-10" id="docentes-extranjero-media-10"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 11° Grado -->
+                <div class="flex items-center mb-4 justify-between media-capacitados-extranjero" id="docentes-capacitados-extranjero-media-11">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-media-11"> 11° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-media-11" id="docentes-extranjero-media-11"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 12° Grado -->
+                <div class="flex items-center mb-4 justify-between media-capacitados-extranjero" id="docentes-capacitados-extranjero-media-12">
+                    <div class="w-1/3 px-4">
+                        <label class="block text-sm font-bold text-[#233559]" for="docentes-extranjero-media-12"> 12° Grado
+                        </label>
+                    </div>
+                    <div class="w-2/3 px-4">
+                        <select name="docentes-extranjero-media-12" id="docentes-extranjero-media-12"
+                            class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 select-personalizado">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option value="1-5">1 - 5</option>
+                            <option value="6-10">6 - 10</option>
+                            <option value="11-15">11 - 15</option>
+                            <option value="15+">15+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            var checkboxInicial = document.getElementById('inicial');
+            var checkboxPrimaria = document.getElementById('primaria');
+            var checkboxPreMedia = document.getElementById('pre-media');
+            var checkboxMedia = document.getElementById('media');
+
+            var capacitadosExtranjeroInicial = document.querySelectorAll(".inicial-capacitados-extranjero");
+            var capacitadosExtranjeroPrimaria = document.querySelectorAll(".primaria-capacitados-extranjero");
+            var capacitadosExtranjeroPreMedia = document.querySelectorAll(".premedia-capacitados-extranjero");
+            var capacitadosExtranjeroMedia = document.querySelectorAll(".media-capacitados-extranjero");
+
+            function toggleInicial() {
+                capacitadosExtranjeroInicial.forEach(function (elemento) {
+                    if (checkboxInicial.checked) {
+                        elemento.style.display = "flex";
+                    } else {
+                        elemento.style.display = "none";
+                    }
+                });
+            }
+            checkboxInicial.addEventListener('change', toggleInicial);
+            toggleInicial();
+
+            function togglePrimaria() {
+                capacitadosExtranjeroPrimaria.forEach(function (elemento) {
+                        if (checkboxPrimaria.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPrimaria.addEventListener('change', togglePrimaria);
+                togglePrimaria();
+
+                function togglePreMedia() {
+                    capacitadosExtranjeroPreMedia.forEach(function (elemento) {
+                        if (checkboxPreMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxPreMedia.addEventListener('change', togglePreMedia);
+                togglePreMedia();
+
+                function toggleMedia() {
+                    capacitadosExtranjeroMedia.forEach(function (elemento) {
+                        if (checkboxMedia.checked) {
+                            elemento.style.display = "flex";
+                        } else {
+                            elemento.style.display = "none";
+                        }
+                    });
+                }
+                checkboxMedia.addEventListener('change', toggleMedia);
+                toggleMedia();
+        </script>
+
+
+        </div>
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-5 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            <div id="nxtButton-5"
+            class="next-stp-5 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+<script>
+
+    //Validaciones
+
+    document.getElementById('nxtButton-5').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // niveles
+        const nivelEducativoInicial = document.getElementById('inicial').checked;
+        const nivelEducativoPrimaria = document.getElementById('primaria').checked;
+        const nivelEducativoPreMedia = document.getElementById('pre-media').checked;
+        const nivelEducativoMedia = document.getElementById('media').checked;
+        
+        let validacionMedia = true;
+        if(nivelEducativoMedia){
+            for (let grado = 12; grado >= 10; grado--) {
+                let selectId = `particicipa-ppb-${grado}`;
+                let selectElement = document.getElementById(selectId);
+                let isValid = validateInput(selectElement);
+                validacionMedia = validacionMedia && isValid;
+
+                // Validación para docentes capacitados
+                let selectIdCapacitados = `docentes-capacitados-media-${grado}`;
+                let selectElementCapacitados = document.getElementById(selectIdCapacitados);
+                let isValidCapacitados = validateInput(selectElementCapacitados);
+                validacionMedia = validacionMedia && isValidCapacitados;
+
+                // Validación para docentes aprobados
+                let selectIdAprobados = `docentes-aprobados-media-${grado}-select`;
+                let selectElementAprobados = document.getElementById(selectIdAprobados);
+                let isValidAprobados = validateInput(selectElementAprobados);
+                validacionMedia = validacionMedia && isValidAprobados;
+
+                // Validación para docentes capacitados en el extranjero
+                let selectIdExtranjero = `docentes-extranjero-media-${grado}`;
+                let selectElementExtranjero = document.getElementById(selectIdExtranjero);
+                let isValidExtranjero = validateInput(selectElementExtranjero);
+                validacionMedia = validacionMedia && isValidExtranjero;
+                    }
+                }
+
+        // VALIDACION para premedia
+        // Validar premedia
+        let validacionPremedia = true;
+        if(nivelEducativoPreMedia){
+            for (let grado = 9; grado >= 7; grado--) {
+                // Validación para participación existente
+                let selectIdParticipa = `particicipa-ppb-${grado}`;
+                let selectElementParticipa = document.getElementById(selectIdParticipa);
+                let isValidParticipa = validateInput(selectElementParticipa);
+                validacionPremedia = validacionPremedia && isValidParticipa;
+
+                // Validación para docentes capacitados
+                let selectIdCapacitados = `docentes-capacitados-premedia-${grado}`;
+                let selectElementCapacitados = document.getElementById(selectIdCapacitados);
+                let isValidCapacitados = validateInput(selectElementCapacitados);
+                validacionPremedia = validacionPremedia && isValidCapacitados;
+
+                // Validación para docentes aprobados
+                let selectIdAprobados = `docentes-aprobados-premedia-${grado}-select`;
+                let selectElementAprobados = document.getElementById(selectIdAprobados);
+                let isValidAprobados = validateInput(selectElementAprobados);
+                validacionPremedia = validacionPremedia && isValidAprobados;
+
+                // Validación para docentes capacitados en el extranjero
+                let selectIdExtranjero = `docentes-extranjero-premedia-${grado}`;
+                let selectElementExtranjero = document.getElementById(selectIdExtranjero);
+                let isValidExtranjero = validateInput(selectElementExtranjero);
+                validacionPremedia = validacionPremedia && isValidExtranjero;
+            }
+        }
+
+         //validar primaria
+         // Validar primaria
+        let validacionPrimaria = true;
+        if(nivelEducativoPrimaria){
+            for (let grado = 6; grado >= 1; grado--) {
+                // Validación de participación existente
+                let selectParticipaId = `particicipa-ppb-${grado}`;
+                let selectParticipaElement = document.getElementById(selectParticipaId);
+                validacionPrimaria = validacionPrimaria && validateInput(selectParticipaElement);
+
+                // Nuevas validaciones
+                // Docentes capacitados
+                let selectDocentesCapacitadosId = `docentes-capacitados-primaria-${grado}`;
+                let selectDocentesCapacitadosElement = document.getElementById(selectDocentesCapacitadosId);
+                validacionPrimaria = validacionPrimaria && validateInput(selectDocentesCapacitadosElement);
+
+                // // Docentes aprobados
+                let selectDocentesAprobadosId = `docentes-aprobados-primaria-${grado}-select`;
+                let selectDocentesAprobadosElement = document.getElementById(selectDocentesAprobadosId);
+                validacionPrimaria = validacionPrimaria && validateInput(selectDocentesAprobadosElement);
+
+                // // Docentes capacitados en el extranjero
+                let selectDocentesExtranjeroId = `docentes-extranjero-primaria-${grado}`;
+                let selectDocentesExtranjeroElement = document.getElementById(selectDocentesExtranjeroId);
+                validacionPrimaria = validacionPrimaria && validateInput(selectDocentesExtranjeroElement);
+            
+            }
+        }
+
+        // validacion incial
+        let validacionInicialK = true;
+        let validacionInicialPK = true;
+        let validacionDocentesCapacitadosPreKinder = true;
+        let validacionDocentesCapacitadosKinder = true;
+        let validacionDocentesAprobadosPreKinder = true;
+        let validacionDocentesAprobadosKinder = true;
+        let validacionDocentesCapacitadosExtranjeroPreKinder = true;
+        let validacionDocentesCapacitadosExtranjeroKinder = true;
+
+        if (nivelEducativoInicial) {
+            validacionInicialK = validateInput(document.getElementById('kinder-ppb-select'));
+            validacionInicialPK = validateInput(document.getElementById('pre-kinder-ppb'));
+            validacionDocentesCapacitadosPreKinder = validateInput(document.getElementById('docentes-capacitados-prekinder'));
+            validacionDocentesCapacitadosKinder = validateInput(document.getElementById('docentes-capacitados-kinder'));
+            validacionDocentesAprobadosPreKinder = validateInput(document.getElementById('docentes-aprobados-prekinder-select'));
+            validacionDocentesAprobadosKinder = validateInput(document.getElementById('docentes-aprobados-kinder-select'));
+            validacionDocentesCapacitadosExtranjeroPreKinder = validateInput(document.getElementById('docentes-extranjero-prekinder'));
+            validacionDocentesCapacitadosExtranjeroKinder = validateInput(document.getElementById('docentes-extranjero-kinder'));
+        }
+
+        let validacionTotalInicial = validacionInicialK && validacionInicialPK && 
+                                    validacionDocentesCapacitadosPreKinder && validacionDocentesCapacitadosKinder &&
+                                    validacionDocentesAprobadosPreKinder && validacionDocentesAprobadosKinder &&
+                                    validacionDocentesCapacitadosExtranjeroPreKinder && validacionDocentesCapacitadosExtranjeroKinder;
+
+
+        const participaActivamentePPB = validateRadioGroup('participa_ppb');
+        
+        if (validacionTotalInicial && validacionMedia && validacionPremedia && validacionPrimaria && validacionInicialK && validacionInicialPK && participaActivamentePPB) {
+            document.querySelector('.step-6').style.display = "flex";
+            document.querySelector('.step-5').style.display = "none";
+        }
+
+        
+    });
+
+     // boton atras
+    const prevButton5 = document.querySelector('.prev-stp-5');
+    prevButton5.addEventListener('click', function(event){
+            document.querySelector('.step-5').style.display = "none";
+            document.querySelector('.step-4').style.display = "flex";
+    })
+</script>

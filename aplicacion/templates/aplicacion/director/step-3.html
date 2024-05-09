@@ -1,0 +1,801 @@
+<div class="stp step-3">
+    <h6 class="text-xl font-bold text-[#233559] mb-6 text-center">
+        Información General del Centro Educativo
+    </h6>
+
+    <div class="flex flex-wrap">
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="director-codigo-siace">
+                    Código SIACE
+                </label>
+                <input type="text" name="codigo_siace"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escriba el código" id="director-codigo-siace" value="{{ cod_siace }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 flex justify-between">
+            <div class="relative w-full mb-3 pr-4 mr-4">
+                <label class="block text-sm font-bold text-[#233559]" for="director-nombre-centro">
+                    Nombre del Centro educativo
+                </label>
+                <input type="text" name="nombre_centro_educativo"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escriba el nombre del centro educativo" id="director-nombre-centro"
+                    value="{{ nombre_escuela }}">
+            </div>
+            <div class="flex flex-col items-center ml-8"> 
+                <div class="flex flex-col items-center justify-center">
+                    <label class="text-sm text-[#233559]">¿Es</label>
+                    <label class="text-sm text-[#233559]">correcto?</label>
+                </div>
+                <div class="flex mt-2">
+                    <div class="flex items-center">
+                        <input id="nombre-centro-valido-si" name="nombre_centro_valido" type="radio"
+                            class="focus:ring-[#483eff] h-4 w-4 text-[#483eff] border-gray-300" value="si">
+                        <label for="nombre-centro-valido-si" class="ml-2 block text-sm text-[#233559]">
+                            Sí
+                        </label>
+                    </div>
+                    <div class="flex items-center ml-4 pl-4">
+                        <input id="nombre-centro-valido-no" name="nombre_centro_valido" type="radio"
+                            class="focus:ring-[#483eff] h-4 w-4 text-[#483eff] border-gray-300" value="no">
+                        <label for="nombre-centro-valido-no" class="ml-2 block text-sm text-[#233559]">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 pr-4">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="director-region-educativa">
+                    Región Educativa
+                </label>
+                <input type="text" name="region_educativa"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escriba la región educativa" id="director-region-educativa"
+                    value="{{ corregimiento }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="director-provincia">
+                    Provincia
+                </label>
+                <input type="text" name="provincia"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escriba el nombre de la provincia" id="director-provincia"
+                    value="{{ provincia }}">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-12/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="director-direccion">
+                    Dirección
+                </label>
+                <input type="text" name="direccion"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    placeholder="Escriba la dirección" id="director-direccion">
+            </div>
+        </div>
+
+        <div class="w-full lg:w-12/12">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="director-2-geolocalizacion">
+                    Geolocalización
+                </label>
+                <div id="map" style="height: 400px;"></div>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" id="nivel-educativo">Niveles Educativos
+                    Ofrecidos</label>
+                <div class="mt-2 px-4">
+                    <input type="checkbox" id="inicial" name="nivel-educativo" value="Inicial"
+                        class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" {% if 'Inicial' in niveles_educativos %}checked{% endif %}>
+                    <label for="inicial" class="ml-2 text-sm font-medium text-gray-900">Inicial</label><br>
+                    <input type="checkbox" id="primaria" name="nivel-educativo" value="Primaria"
+                        class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" {% if 'Primaria' in niveles_educativos %}checked{% endif %}>
+                    <label for="primaria" class="ml-2 text-sm font-medium text-gray-900">Primaria</label><br>
+                    <input type="checkbox" id="pre-media" name="nivel-educativo" value="Pre-media"
+                        class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" {% if 'Secundario' in niveles_educativos %}checked{% endif %}>
+                    <label for="pre-media" class="ml-2 text-sm font-medium text-gray-900">Pre Media</label><br>
+                    <input type="checkbox" id="media" name="nivel-educativo" value="Media"
+                        class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" {% if 'Media' in niveles_educativos %}checked{% endif %}>
+                    <label for="media" class="ml-2 text-sm font-medium text-gray-900">Media</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full text-center">
+            <h3 class="text-lg font-bold text-[#233559] mb-4">Información sobre los estudiantes</h3>
+        </div>
+        <!-- Matrícula total de estudiantes -->
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-estudiantes">
+                    Matrícula total de estudiantes
+                </label>
+                <input type="number" name="matricula_total"
+                    class="br-input mt-2 w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    id="matricula-total-estudiantes" min="0" placeholder="Ingrese el total">
+            </div>
+        </div>
+
+        <!-- Alumnos por grado y division por sexo -->
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="inicial-fields">
+            
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Estudiantes Inicial</h3>
+            </div>
+                <!-- Fila para pre kinder-->
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-prekinder">
+                    Matrícula total Pre Kinder
+                </label>
+                <input type="number" name="prekinder" id="matricula-total-prekinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-prekinder">
+                    Pre Kinder Femenino
+                </label>
+                <input type="number" name="femenino-prekinder" id="femenino-prekinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-prekinder">
+                    Pre Kinder Masculino
+                </label>
+                <input type="number" name="masculino-prekinder" id="masculino-prekinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+              <!-- Fila para Kinder -->
+              <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-kinder">
+                    Matrícula total Kinder
+                </label>
+                <input type="number" name="kinder" id="matricula-total-kinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-kinder">
+                    Kinder Femenino
+                </label>
+                <input type="number" name="femenino-kinder" id="femenino-kinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-kinder">
+                    Kinder Masculino
+                </label>
+                <input type="number" name="masculino-kinder" id="masculino-kinder"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+        </div>
+
+          <!-- Filas para primaria-->
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="primaria-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Estudiantes Primaria</h3>
+            </div>
+            <!-- Fila para Primaria 1ero al 6to grado -->
+            {% for grado in "123456" %}
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-primaria-{{grado}}">
+                    Matrícula total Primaria {{grado}}°
+                </label>
+                <input type="number" name="primaria-{{grado}}" id="matricula-total-primaria-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-primaria-{{grado}}">
+                    Primaria {{grado}}° Femenino
+                </label>
+                <input type="number" name="femenino-primaria-{{grado}}" id="femenino-primaria-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-primaria-{{grado}}">
+                    Primaria {{grado}}° Masculino
+                </label>
+                <input type="number" name="masculino-primaria-{{grado}}" id="masculino-primaria-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="pre-media-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Estudiantes Pre Media</h3>
+            </div>
+            {% for grado in "789" %}
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-premedia-{{grado}}">
+                    Matrícula total Pre-media {{grado}}°
+                </label>
+                <input type="number" name="premedia-{{grado}}" id="matricula-total-premedia-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-premedia-{{grado}}">
+                    Pre-media {{grado}}° Femenino
+                </label>
+                <input type="number" name="femenino-premedia-{{grado}}" id="femenino-premedia-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-premedia-{{grado}}">
+                    Pre-media {{grado}}° Masculino
+                </label>
+                <input type="number" name="masculino-premedia-{{grado}}" id="masculino-premedia-{{grado}}"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="media-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Estudiantes Media</h3>
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-media-10">
+                    Matrícula total Media 10°
+                </label>
+                <input type="number" name="media-10" id="matricula-total-media-10"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-media-10">
+                    Media 10° Femenino
+                </label>
+                <input type="number" name="femenino-media-10" id="femenino-media-10"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-media-10">
+                    Media 10° Masculino
+                </label>
+                <input type="number" name="masculino-media-10" id="masculino-media-10"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-media-11">
+                    Matrícula total Media 11°
+                </label>
+                <input type="number" name="media-11" id="matricula-total-media-11"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-media-11">
+                    Media 11° Femenino
+                </label>
+                <input type="number" name="femenino-media-11" id="femenino-media-11"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-media-11">
+                    Media 11° Masculino
+                </label>
+                <input type="number" name="masculino-media-11" id="masculino-media-11"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="matricula-total-media-12">
+                    Matrícula total Media 12°
+                </label>
+                <input type="number" name="media-12" id="matricula-total-media-12"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="femenino-media-12">
+                    Media 12° Femenino
+                </label>
+                <input type="number" name="femenino-media-12" id="femenino-media-12"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="masculino-media-12">
+                    Media 12° Masculino
+                </label>
+                <input type="number" name="masculino-media-12" id="masculino-media-12"
+                    class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm"
+                    min="0" placeholder="Cantidad">
+            </div>
+        </div>
+    
+        <script>
+
+
+            // Oculta mostrar dependiendo del nivel del ce
+            document.addEventListener('DOMContentLoaded', function () {
+                var checkboxInicial = document.getElementById('inicial');
+                var checkboxPrimaria = document.getElementById('primaria');
+                var checkboxPreMedia = document.getElementById('pre-media');
+                var checkboxMedia = document.getElementById('media');
+
+                var filaInicial = document.getElementById('inicial-fields');                    
+                var filaPrimaria = document.getElementById('primaria-fields');
+                var filaPreMedia = document.getElementById('pre-media-fields');
+                var filaMedia = document.getElementById('media-fields');
+            
+                // Función para mostrar/ocultar la fila de Pre Kinder
+                function togglePreKinderFields() {
+                    if (checkboxInicial.checked) {
+                        filaInicial.style.display = 'flex'; 
+                    } else {
+                        filaInicial.style.display = 'none';
+                    }
+                }
+                checkboxInicial.addEventListener('change', togglePreKinderFields);
+                togglePreKinderFields();
+
+                // Función para mostrar/ocultar la fila de Primaria
+                function togglePrimaria() {
+                    if (checkboxPrimaria.checked) {
+                        filaPrimaria.style.display = 'flex'; 
+                    } else {
+                        filaPrimaria.style.display = 'none'; 
+                    }
+                }
+                checkboxPrimaria.addEventListener('change', togglePrimaria);
+                togglePrimaria();
+
+                // Funcion premdia
+                function togglePremediaFields(){
+                    if(checkboxPreMedia.checked){
+                        filaPreMedia.style.display = 'flex';
+                    }else{
+                        filaPreMedia.style.display = 'none';
+                    }
+                }
+                checkboxPreMedia.addEventListener('change', togglePremediaFields);
+                togglePremediaFields();
+
+                // Funcion media
+                function toggleMediaFields(){
+                    if(checkboxMedia.checked){
+                        filaMedia.style.display = 'flex';
+                    }else{
+                        filaMedia.style.display = 'none';
+                    }
+                }
+                checkboxMedia.addEventListener('change', toggleMediaFields);
+                toggleMediaFields();
+            });
+            </script>
+
+        
+        <!---------------------Informacion sobre los docente------------------------------------------------------->
+
+        <div class="w-full text-center mt-4 pt-6">
+            <h3 class="text-lg font-bold text-[#233559] mb-4">Información sobre los docentes</h3>
+        </div>
+
+        <div class="w-full lg:w-6/12 px-4 mb-3">
+            <div class="relative w-full mb-3">
+                <label class="block text-sm font-bold text-[#233559]" for="total-docentes">
+                    Cantidad total de docentes
+                </label>
+                <select name="total-docentes" id="total-docentes"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option class="" value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="inicial-docentes-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Docentes Inicial</h3>
+            </div>
+            <div class="w-full lg:w-6/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-prekinder">
+                    Total Docentes Pre Kinder
+                </label>
+                <select name="docentes-total-prekinder" id="docentes-total-prekinder"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+
+            <div class="w-full lg:w-6/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-kinder">
+                    Total Docentes Kinder
+                </label>
+                <select name="docentes-total-kinder" id="docentes-total-kinder"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="primaria-docentes-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Docentes Primaria</h3>
+            </div>
+            {% for grado in "123456" %}
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-primaria-{{grado}}">
+                    Total Docentes {{grado}}° Grado
+                </label>
+                <select name="total-docentes-primaria-{{grado}}" id="docentes-total-primaria-{{grado}}"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="pre-media-docentes-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Docentes Pre-Media</h3>
+            </div>
+            {% for grado in "789" %}
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-premedia-{{grado}}">
+                    Total Docentes {{grado}}° Grado
+                </label>
+                <select name="total-docentes-premedia-{{grado}}" id="docentes-total-premedia-{{grado}}"
+                        class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="flex flex-wrap mx-4 lg:w-12/12" id="media-docentes-fields">
+            <div class="w-full">
+                <h3 class="text-lg font-bold text-[#233559] mb-4">Docentes Media</h3>
+            </div>
+            <!-- 10th Grade -->
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-10">
+                    Total Docentes 10° Grado
+                </label>
+                <select name="total-docentes-media-10" id="docentes-total-media-10"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+            <!-- 11th Grade -->
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-11">
+                    Total Docentes 11° Grado
+                </label>
+                <select name="total-docentes-media-11" id="docentes-total-media-11"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+            <!-- 12th Grade -->
+            <div class="w-full lg:w-4/12 px-4 mb-4">
+                <label class="block text-sm font-bold text-[#233559]" for="docentes-total-media-12">
+                    Total Docentes 12° Grado
+                </label>
+                <select name="total-docentes-media-12" id="docentes-total-media-12"
+                        class="br-input w-full border-gray-300 rounded-lg shadow-sm focus:border-[#483eff] focus:ring-[#483eff] shadow-blue-500/50 shadow-sm">
+                    <option value="" disabled selected>Seleccione opción</option>
+                    <option value="1">1</option>
+                    <option value="2-5">2-5</option>
+                    <option value="6-9">6-9</option>
+                    <option value="10+">10+</option>
+                </select>
+            </div>
+        </div>
+
+        
+            <div class="w-full lg:w-6/12 px-4 mb-4">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]">
+                        Número de estudiantes por salón
+                    </label>
+                    <div class="mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="numero-estudiantes-salon" value="1-20">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">1-20</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="numero-estudiantes-salon" value="21-40">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">21-40</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="numero-estudiantes-salon" value="41-60">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">41-60</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="numero-estudiantes-salon" value="61-80">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">más de 80</span><br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-6/12 mb-4">
+                <div class="relative w-full mb-3">
+                    <label class="block text-sm font-bold text-[#233559]">
+                        Cantidad de docentes por asignatura
+                    </label>
+                    <div class="mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="cantidad-docentes-asignatura" value="1">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">1</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="cantidad-docentes-asignatura" value="2-5">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">2-5</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="cantidad-docentes-asignatura" value="6-9">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">6-9</span><br>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="cantidad-docentes-asignatura" value="10+">
+                            <span class="ml-2 text-sm font-medium text-[#233559]">10+</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="btns flex justify-between">
+        <div class="prev-stp-3 visita mt-6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="button">Atrás</div>
+
+            <div class="visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer" type="submit">
+                <span class="block">Guardar y continuar luego</span>
+            </div>
+
+            <div id="nxtButton-3"
+            class="next-stp-3 visita mt-6 flex justify-center items-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            type="submit" style="cursor: pointer;">Siguiente</div>
+    </div>
+</div>
+
+<script>
+    // Validacion preguntas
+    document.getElementById('nxtButton-3').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        //validacion numero estudiantes por salon y cantidad docentes por asignatura
+
+        const isValidCantidadDocentesAsign = validateRadioGroup('cantidad-docentes-asignatura');
+        const isValidNumeroEstudiantesSalon = validateRadioGroup('numero-estudiantes-salon');
+
+        //Niveles checboks
+        const nivelEducativoPrimaria = document.getElementById('primaria').checked;
+        const nivelEducativoPreMedia = document.getElementById("pre-media").checked;
+        const nivelEducativoMedia = document.getElementById("media").checked;
+
+        //Validacion media
+        let validacionMediaDocente = true;
+        if (nivelEducativoMedia) {
+        for (let grado of [10, 11, 12]) {
+            validacionMediaDocente = validacionMediaDocente && validateInput(document.getElementById(`docentes-total-media-${grado}`));
+        }
+    }
+
+        //Validacion pre media
+        let validacionPreMediaDocente = true;
+        if (nivelEducativoPreMedia) {
+        for (let grado of [7, 8, 9]) {
+            validacionPreMediaDocente = validacionPreMediaDocente && validateInput(document.getElementById(`docentes-total-premedia-${grado}`));
+        }
+    }
+
+        //Validacion docente primaria
+        let validacionPrimariaDocente = true;
+
+        if (nivelEducativoPrimaria) {
+            for (let grado = 1; grado <= 6; grado++) {
+                validacionPrimariaDocente = validacionPrimariaDocente && validateInput(document.getElementById(`docentes-total-primaria-${grado}`));
+            }
+        }
+
+        //validacion decentes incial
+        const nivelEducativoInicialDocente = document.getElementById("inicial").checked;
+        let validacionInicialDocente = true;
+        if (nivelEducativoInicialDocente) {
+            validacionInicialDocente = validacionInicialDocente && validateInput(document.getElementById("docentes-total-prekinder"));
+            validacionInicialDocente = validacionInicialDocente && validateInput(document.getElementById("docentes-total-kinder"));
+        }
+
+        // validacion total docente
+        const isValidTotalDocentes = validateInput(document.getElementById('total-docentes'));
+
+        // validacion media
+        let validacionMedia = true;
+
+        if (nivelEducativoMedia) {
+            for (let grado of [10, 11, 12]) {
+                validacionMedia = validacionMedia && validateInput(document.getElementById(`matricula-total-media-${grado}`));
+                validacionMedia = validacionMedia && validateInput(document.getElementById(`femenino-media-${grado}`));
+                validacionMedia = validacionMedia && validateInput(document.getElementById(`masculino-media-${grado}`));
+            }
+        }
+
+        // validacion premedia
+        let validacionPreMedia = true;
+
+        if (nivelEducativoPreMedia) {
+        for (let grado = 7; grado <= 9; grado++) {
+            validacionPreMedia = validacionPreMedia && validateInput(document.getElementById(`matricula-total-premedia-${grado}`));
+            validacionPreMedia = validacionPreMedia && validateInput(document.getElementById(`femenino-premedia-${grado}`));
+            validacionPreMedia = validacionPreMedia && validateInput(document.getElementById(`masculino-premedia-${grado}`));
+        }
+    }
+        
+        
+        // Validacion primaria
+        let validacionPrimaria = true;
+        if (nivelEducativoPrimaria) {
+            // Itera sobre cada grado de Primaria (1° a 6°)
+            for (let grado = 1; grado <= 6; grado++) {
+                
+                validacionPrimaria = validacionPrimaria && validateInput(document.getElementById(`matricula-total-primaria-${grado}`));
+                validacionPrimaria = validacionPrimaria && validateInput(document.getElementById(`femenino-primaria-${grado}`));
+                validacionPrimaria = validacionPrimaria && validateInput(document.getElementById(`masculino-primaria-${grado}`));
+            }
+        }
+
+        
+        // Validacion inicial
+        const nivelEducativoInicial = document.getElementById('inicial').checked;
+        let validacionInicial = true;
+        if (nivelEducativoInicial) {
+            const masculinoKinder = validateInput(document.getElementById('masculino-kinder'));
+            const femeninoKinder = validateInput(document.getElementById('femenino-kinder'));
+            const matriculaTotalKinder = validateInput(document.getElementById('matricula-total-kinder'));
+            const masculinoPrekinder = validateInput(document.getElementById('masculino-prekinder'));
+            const femeninoPrekinder = validateInput(document.getElementById('femenino-prekinder'));
+            const matriculaTotalPrekinder = validateInput(document.getElementById('matricula-total-prekinder'));
+            validacionInicial = matriculaTotalPrekinder && femeninoPrekinder && masculinoPrekinder &&
+                matriculaTotalKinder && femeninoKinder && masculinoKinder;
+        }
+
+
+
+        const matriculaTotalEstudiantes = validateInput(document.getElementById('matricula-total-estudiantes'));
+        const nivelesOfrecidos = validateCheckboxGroup('nivel-educativo');
+        
+        const direccion = validateInput(document.getElementById('director-direccion'));
+        const provincia = validateInput(document.getElementById('director-provincia'));
+        const regionEducativa = validateInput(document.getElementById('director-region-educativa'));
+        const esCorrectoValido = validateRadioGroup('nombre_centro_valido');
+        const nombreCentroEdu = validateInput(document.getElementById('director-codigo-siace'));
+        const codSiace = validateInput(document.getElementById('director-nombre-centro'));
+    
+        
+
+        if (isValidCantidadDocentesAsign && isValidNumeroEstudiantesSalon && validacionMediaDocente && validacionPreMediaDocente && validacionPrimariaDocente && validacionInicialDocente && isValidTotalDocentes && validacionMedia && validacionPreMedia && validacionPrimaria && validacionInicial && matriculaTotalEstudiantes && nivelesOfrecidos && direccion && provincia && regionEducativa && codSiace &&  esCorrectoValido && codSiace) {
+            console.log('Esta ejecutnado');
+            document.querySelector('.step-4').style.display = "flex";
+            document.querySelector('.step-3').style.display = "none";
+        }
+    });
+
+    // logica checkbox
+    document.addEventListener('DOMContentLoaded', function () {
+        var checkboxInicial = document.getElementById('inicial');
+        var checkboxPrimaria = document.getElementById('primaria');
+        var checkboxPreMedia = document.getElementById('pre-media');
+        var checkboxMedia = document.getElementById('media');
+
+        var filaDocentesInicial = document.getElementById('inicial-docentes-fields');
+        var filaDocentesPrimaria = document.getElementById('primaria-docentes-fields');
+        var filaDocentesPreMedia = document.getElementById('pre-media-docentes-fields');
+        var filaDocentesMedia = document.getElementById('media-docentes-fields');
+
+        // Función para mostrar/ocultar la fila de Pre Kinder
+        function toggleDocentesPreKinderFields() {
+            if (checkboxInicial.checked) {
+                filaDocentesInicial.style.display = 'flex';
+            } else {
+                filaDocentesInicial.style.display = 'none';
+            }
+        }
+        checkboxInicial.addEventListener('change', toggleDocentesPreKinderFields);
+        toggleDocentesPreKinderFields();
+
+        // Función para mostrar/ocultar la fila de Primaria
+        function toggleDocentesPrimaria() {
+            if (checkboxPrimaria.checked) {
+                filaDocentesPrimaria.style.display = 'flex';
+            } else {
+                filaDocentesPrimaria.style.display = 'none';
+            }
+        }
+        checkboxPrimaria.addEventListener('change', toggleDocentesPrimaria);
+        toggleDocentesPrimaria();
+
+        // Función para mostrar/ocultar la fila de Pre Media
+        function toggleDocentesPreMedia() {
+            if (checkboxPreMedia.checked) {
+                filaDocentesPreMedia.style.display = 'flex';
+            } else {
+                filaDocentesPreMedia.style.display = 'none';
+            }
+        }
+        checkboxPreMedia.addEventListener('change', toggleDocentesPreMedia);
+        toggleDocentesPreMedia();
+
+        // Función para mostrar/ocultar la fila de Media
+        function toggleDocentesMedia() {
+            if (checkboxMedia.checked) {
+                filaDocentesMedia.style.display = 'flex';
+            } else {
+                filaDocentesMedia.style.display = 'none';
+            }
+        }
+        checkboxMedia.addEventListener('change', toggleDocentesMedia);
+        toggleDocentesMedia();
+
+    });
+
+
+    // boton atras
+    const prevButton3 = document.querySelector('.prev-stp-3');
+    prevButton3.addEventListener('click', function(event){
+            document.querySelector('.step-3').style.display = "none";
+            document.querySelector('.step-2').style.display = "flex";
+    })
+
+</script>

@@ -1,0 +1,268 @@
+{% extends 'base/base-formulario.html' %}
+{% load static tailwind_tags %}
+
+{% block numero-pagina %}
+<div class="form-sidebar p-6 h-full flex flex-col justify-between">
+    <div>
+        <div class="step active mb-4">
+            <div class="circle">1</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">2</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">3</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">4</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">5</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">6</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">7</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">8</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">9</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+        <div class="step mb-4">
+            <div class="circle">10</div>
+            <div class="step-content">
+                <span>Paso</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button
+            class="boton-logout mt-4 w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#483eff] hover:bg-[#665eff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <a href="/microsoft_authentication/logout" style="text-decoration: none; color: inherit;">Cerrar Sesión</a>
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block barra-porcentaje %}
+<div id="barra-porcentaje" class="text-xl font-medium text-blue-100 text-center leading-none rounded-full"
+    style="width: 10%">0%</div>
+{% endblock %}
+
+{% block contenido-formulario %}
+<style>
+    input[type="radio"]:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .boton-logout {
+        background-color: #036fbc;
+        color: white;
+        padding: 10px 24px;
+        cursor: pointer;
+        border-radius: 20px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+        border: 2px solid white;
+    }
+    .boton-logout:hover {
+        background-color: #0266ad; 
+    }
+
+    .select-personalizado {
+        font-size: 0.875rem;
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+}
+
+.select-personalizado-2 {
+    font-size: 0.875rem;
+        padding-top: 0.15rem;
+        padding-bottom: 0.15rem;
+        
+}
+
+
+    .flex.items-center.mb-4.justify-between {
+        margin-bottom: 0.4rem;
+    }
+    
+           #software-list li {
+                    background-color: #ffffff;
+                    color: #233559;
+                    padding: 8px;
+                    border-radius: 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 1px solid #ccc;
+                }
+            
+                #software-list i {
+                    color: #0b87ff;
+                    cursor: pointer;
+                }
+            
+                #software-list span {
+                    margin-left: 8px;
+                }
+            
+                #software-list li span {
+                    width: 10%;
+                    text-align: right;
+                }
+            
+                #software-list li span:first-child {
+                    width: 90%;
+                    text-align: left;
+                }
+
+                #add-software{
+                    background-color: #0b87ff;
+                }
+                #add-software:hover{
+                    background-color: #0b78e6;
+                }
+ 
+                #software-list .fa-edit {
+                    color: #0b87ff;
+                }
+
+                #software-list .fa-trash {
+                    color: #ff4941;
+                }
+            
+            /*To do list generico*/
+            .item-list li {
+                background-color: #ffffff;
+                color: #233559;
+                padding: 8px;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .item-list i {
+                color: #0b87ff;
+                cursor: pointer;
+            }
+
+            .item-list span {
+                margin-left: 8px;
+            } 
+            
+            .item-list button {
+                margin-left: 11px;
+            }
+
+            .item-list li span {
+                flex-grow: 1;
+                text-align: left;
+            }
+
+            .item-list li span:last-child {
+                flex-basis: 10%;
+                text-align: right;
+            }
+
+            .add-btn {
+                background-color: #0b87ff;
+            }
+            .add-btn:hover {
+                background-color: #0b78e6;
+            }
+
+            .item-list .fa-edit, .item-list .fa-trash {
+                margin-left: 8px;
+            }
+
+            .item-list .fa-trash {
+                color: #ff4941;
+            }
+
+            .item-list .fa-edit {
+                color: #0b87ff;
+            }
+
+            .item-list .fa-upload {
+                color: #2f3030;
+            }
+
+            .prev-stp-ste-1 {
+                visibility: hidden;
+            }
+                
+</style>
+
+<div>
+
+    {% csrf_token %}
+    <!-- * Formulario 1 start -->
+    {% include 'aplicacion/director/step-1.html' %}
+    {% include 'aplicacion/director/step-2.html' %}
+    {% include 'aplicacion/director/step-3.html' %}
+    {% include 'aplicacion/director/step-4.html' %}
+    {% include 'aplicacion/director/step-5.html' %}
+    {% include 'aplicacion/director/step-6.html' %}
+    {% include 'aplicacion/director/step-7.html' %}
+    {% include 'aplicacion/director/step-8.html' %}
+    {% include 'aplicacion/director/step-9.html' %}
+    {% include 'aplicacion/director/step-10.html' %}
+</div>
+
+<script>
+    function initMap() {
+        var latitudLongitud = "9.0873,-79.53303".split(",");
+        var myLatLng = { lat: parseFloat(latitudLongitud[0]), lng: parseFloat(latitudLongitud[1]) };
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Tu ubicación'
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUgMUeO3O4-VNYpSllGniNfpU3nvc4tlI&callback=initMap" async
+    defer></script>
+{% endblock %}
+
+<script src="{% static '/js/formulario.js' %}" defer></script>
